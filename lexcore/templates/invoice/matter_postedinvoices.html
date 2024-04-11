@@ -1,0 +1,51 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+Posted Invoices
+{% endblock title %}
+
+{% block content %}
+<div class="d-flex">
+    {% include 'layout/sidebar.html' %}
+    <div class="w-100">
+        {% include 'layout/header.html' %}
+        <div class="my-3 mx-3">
+            <a href="{% url 'invoice-matter' matter.id %}">Return</a>
+            <div class="card">
+                <div class="card-header text-center mb-1" style=" color: black; background-color:rgb(228, 248, 188);">
+                    Posted Invoices
+                </div>
+
+                <table class="table-hover table-bordered table-sm small table">
+                    <thead class="table-primary text-center">
+                        <tr>
+                            <th scope="col" style="width:3%;">#</th>
+                            <th scope="col" style="width:12%;">Bill No</th>
+                            <th scope="col" style="width:12%;">Bill Date</th>
+                            <th scope="col" style="width:12%;">Bill Amount(USD)</th>
+                            <th scope="col" style="width:12%;">Bill Amount(PhP)</th>
+                            <th colspan="2" style="width:5%;">Action</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for invoice in invoices %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ invoice.bill_no }}</td>
+                            <td>{{ invoice.bill_date | date:'m/d/Y' }}</td>
+                            <td style="text-align: right;">{{ invoice.total_USDamounts }}</td>
+                            <td style="text-align: right;">{{ invoice.total_PhPamount }}</td>
+                            <td style="text-align: center;"><a class="btn btn-secondary btn-sm"
+                                    href="{% url 'view-invoice' invoice.id %}" title="Edit Due Date"><i
+                                        class="far fa-hand-pointer"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>                
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

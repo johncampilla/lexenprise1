@@ -1,0 +1,25 @@
+<!-- input entry -->
+<div class="input-group input-group-sm mb-1">
+    <span class="input-group-text" style="width: 140px;">Template Name</span>
+    {{form.template_name}}
+</div>
+<!-- Date Format mm/dd/yy on screen -->
+
+<td>{{ matter.filing_date | date:'m/d/Y' }}</td>
+
+<!-- card header -->
+
+<div class=" card-header text-center" style=" color: black; background-color:rgb(228, 248, 188);">
+    <a class="nav-link active" aria-current="page" href="{% url 'newtemplate' %}"><i class="fas fa-plus"></i>                    
+    <b>Templates/Standard</b></a>
+</div>
+
+
+<!-- Read only Form-->
+
+<div class="input-group input-group-sm mb-1">
+    <span class="input-group-text"
+        style="width: 110px; font-weight: bold;">Matter</span>
+    <input type="text" value="{{matter.matter_title}}" class="form-control"
+        readonly>
+</div>

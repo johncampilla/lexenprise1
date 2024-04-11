@@ -1,0 +1,159 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+<div class="d-flex">
+    {% include 'layout/sidebar.html' %}
+    <div class="w-100">
+        {% include 'layout/header.html' %}
+        <div class="my-3 mx-3">
+            <!-- <div class="col-md-6 offset-md-3"> -->
+            <div class="border bg-white p-3 bg-gradient-primary text-black">
+                <h6>View Activity </h6>
+                <hr>
+                        <div class="col-auto">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Matter</span>
+                                        <input type="text" value="{{matter.matter_title}}" class="form-control"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Tran Date</span>
+                                        <input type="text" value="{{activity.tran_date}}" class="form-control"
+                                            readonly>
+                                    </div>
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Document Date</span>
+                                        <input type="text" value="{{activity.doc_date}}" class="form-control"
+                                            readonly>
+                                    </div>
+
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Mailing Date</span>
+                                        <input type="text" value="{{activity.mailing_date}}" class="form-control"
+                                            readonly>
+                                    </div>
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Stage Group</span>
+                                        <input type="text" value="{{activity.stage_group}}" class="form-control"
+                                            readonly>
+                                    </div>
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Lawyer</span>
+                                        <input type="text" value="{{activity.lawyer}}" class="form-control"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Stage Group</span>
+                                        <input type="text" value="{{activity.stage_group}}" class="form-control"
+                                            readonly>
+                                    </div>
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Document Type</span>
+                                        <input type="text" value="{{activity.doc_type}}" class="form-control"
+                                            readonly>
+                                    </div>
+
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Task Code</span>
+                                        <input type="text" value="{{activity.task_code}}" class="form-control"
+                                            readonly>
+                                    </div>
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Tran Type</span>
+                                        <input type="text" value="{{activity.tran_type}}" class="form-control"
+                                            readonly>
+                                    </div>
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Mail Type</span>
+                                        <input type="text" value="{{activity.mail_type}}" class="form-control"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Activity</span>
+                                        <input type="text" style="font-weight: bold;" value="{{activity.task}}" class="form-control"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Spent In Hrs</span>
+                                        <input type="text" value="{{activity.spentinhrs}}" class="form-control"
+                                            readonly>
+                                    </div>
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Spent In Min</span>
+                                        <input type="text" value="{{activity.spentinmin}}" class="form-control"
+                                            readonly>
+                                    </div>
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Contact Person</span>
+                                        <input type="text" value="{{activity.contact_person}}" class="form-control"
+                                            readonly>
+                                    </div>
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text"
+                                            style="width: 110px; font-weight: bold;">Bill Status</span>
+                                        <input type="text" value="{{activity.billstatus}}" class="form-control"
+                                            readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <button type="submit" class="btn btn-primary mb-3">Save Record</button> -->
+                        </div>
+            </div>
+            <div class="card">
+                <div class=" card-header text-center" style=" color: black; background-color:rgb(228, 248, 188);">
+                    <b>Associated Templates</b>
+                </div>
+                <table class="table-hover table-bordered table-sm small table" id="templatelist">
+                    <thead class="table-primary text-center">
+                        <tr>
+                            <th>#</th>
+                            <th>Template</th>
+                            <th>Description</th>
+                            <th>File Name</th>
+                            <th>Select</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for doc in templates %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ doc.template.template_name }}</td>
+                            <td>{{ doc.template.template_docname }}</td>
+                            <td>{{ doc.template.filename }}</td>
+                            <td style="text-align: center;"><a class="btn btn-secondary btn-sm" href="{% url 'generate-docx' doc.id matter.id tid %}" title="Select Template"><i
+                                        class="far fa-hand-pointer"></i></a>
+                            </td>
+    
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

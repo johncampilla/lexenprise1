@@ -1,0 +1,83 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+TM Watch Result
+{% endblock title %}
+
+{% block content %}
+<div class="d-flex">
+    {% include 'layout/sidebar.html' %}
+    <div class="w-100">
+        {% include 'layout/header.html' %}
+        <div class="my-3 mx-3">
+            <div class="card">
+                <div
+                  class="card-header text-center mb-2"
+                  style="color: black; background-color: rgb(228, 248, 188)"
+                >
+                  <b>E-Gazette TM Result of {{tmresult.Mark}} </b>
+                </div>
+                <div class="input-group input-group-sm mb-1 mt-1">
+                    <span class="input-group-text" style="width: 113px;"> Application Number</span>
+                    <input type="text" name="folder" value="{{tmresult.Application_Number}}"
+                        class="form-control" readonly>
+                </div>
+                <div class="input-group input-group-sm mb-1 mt-1">
+                    <span class="input-group-text" style="width: 113px;"> Filing Date</span>
+                    <input type="text" name="folder" value="{{tmresult.Filing_Date}}"
+                        class="form-control" readonly>
+                </div>
+                <div class="input-group input-group-sm mb-1 mt-1">
+                    <span class="input-group-text" style="width: 113px;"> Mark</span>
+                    <input type="text" name="folder" style="font-weight: bold;" value="{{tmresult.Mark}}"
+                        class="form-control" readonly>
+                </div>
+                <div class="input-group input-group-sm mb-1 mt-1">
+                    <span class="input-group-text" style="width: 113px;"> Applicant </span>
+                    <input type="text" name="folder" value="{{tmresult.Applicant}}"
+                        class="form-control" readonly>
+                </div>
+                <div class="input-group input-group-sm mb-1 mt-1">
+                    <span class="input-group-text" style="width: 113px;"> Nice Classes </span>
+                    <input type="text" name="folder" value="{{tmresult.Nice_class}}"
+                        class="form-control" readonly>
+                </div>
+
+
+                <table
+                  class="table-hover table-bordered table-sm small table"
+                  id="tmresultlist"
+                >
+                  <!-- <table class="table-hover table-sm table-bordered small table table-dark table-striped">         -->
+                  <thead class="table-primary text-center">
+                    <tr>
+                      <th scope="col" style="width: 3%">#</th>
+                      <th scope="col" style="width: 15%">Client Number</th>
+                      <th scope="col" style="width: 15%">Application_Number</th>
+                      <th scope="col" style="width: 10%">Filing Date</th>
+                      <th scope="col" style="width: 30%">Our Mark</th>
+                      <th scope="col" style="width: 30%">Applicant</th>
+                      <th scope="col" style="width: 5%">Select</th>
+                    </tr>
+                  </thead>
+                  {% for og in qryMark %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{og.myClient_Number}}</td>
+                    <td>{{og.myPatAppNo}}</td>
+                    <td>{{og.myApplicationDate}}</td>
+                    <td>{{og.myCase1 }}</td>
+                    <td>{{og.myApplicant }}</td>
+                    <td style="text-align: center">
+                      <a class="btn btn-secondary btn-sm" href="{% url 'view-TM' og.my_account_id %}" title="Select"
+                        ><i class="far fa-hand-pointer"></i
+                      ></a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </table>
+              </div>            
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

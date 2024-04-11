@@ -1,0 +1,56 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+Data Migration - Clients
+{% endblock title %}
+
+{% block content %}
+<div class="d-flex">
+    {% include 'layout/sidebar.html' %}
+    <div class="w-100">
+        {% include 'layout/header.html' %}
+        <div class="my-3 mx-3">
+            {% include 'layout/subheader.html' %}
+            <div class="card">
+                <div class="card-header text-center mb-2" style=" color: black; background-color:rgb(228, 248, 188);">
+                    <a class="<i class="fas fa-plus"></i></a>
+                    <b>Client Module</b>
+                </div>
+                <table class="table-hover table-bordered table-sm small table" id="clientlist">
+                    <!-- <table class="table-hover table-sm table-bordered small table table-dark table-striped">         -->
+                    <thead class="table-primary text-center">
+                        <tr>
+                            <th scope="col" style="width:3%;">#</th>
+                            <th scope="col" style="width:15%;">Client Number</th>
+                            <th scope="col" style="width:10%;">Client Name</th>
+                            <th scope="col" style="width:15%;">Street</th>
+                            <th scope="col" style="width:10%;">Email</th>
+                            <th scope="col" style="width:8%;">Industry</th>
+                            <th scope="col" style="width:30%;">Client Type</th>
+                            <th scope="col" style="width:5%;">ContactPerson</th>
+                            <th scope="col" style="width:5%;">Select</th>
+
+                        </tr>
+                    </thead>
+                    {% for client in clients %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{client.CLIENTNUMBER}}</td>
+                        <td>{{ client.ClientName }}</td>
+                        <td>{{ client.Street }}</td>
+                        <td>{{ client.EMail }}</td>
+                        <td>{{ client.industry }}</td>
+                        <td>{{ client.ClientType }}</td>
+                        <td>{{ client.ContactPerson }}</td>
+                        <td style="text-align: center;"><a class="btn btn-secondary btn-sm"
+                                href="{% url 'selected-csv_clients' client.id %}" title="Select"><i
+                                    class="far fa-hand-pointer"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>            
+        </div>
+    </div>
+</div>
+{% endblock content %}

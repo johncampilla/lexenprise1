@@ -1,0 +1,35 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+Reply Details
+{% endblock title %}
+
+{% block content %}
+<div class="d-flex">
+    {% include 'layout/sidebar.html' %}
+    <div class="w-100">
+        {% include 'layout/header.html' %}
+        <div class="my-3 mx-3">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group input-group-sm mb-1 mt-1">
+                        <span class="input-group-text" style="width: 113px;">Reply To </span>
+                        <input type="text" name="messageto" value="{{message.messagefrom}}" class="form-control" readonly>
+                    </div>
+                    <div class="input-group input-group-sm mb-1 mt-1">
+                        <span class="input-group-text" style="width: 113px;">Message Date</span>
+                        <input type="text" name="created_at" value="{{message.created_at}}" class="form-control" readonly>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-1 mt-1">
+                        <span class="input-group-text" style="width: 113px;">message</span>
+                        <input type="text" name="folder" value="{{message.messagebox}}" class="form-control" readonly>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,245 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+View CSV Matter
+{% endblock title %}
+
+{% block content %}
+<div class="d-flex">
+    {% include 'layout/sidebar.html' %}
+    <div class="w-100">
+        {% include 'layout/header.html' %}
+        <div class="my-3 mx-3">
+            <div class="card">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="input-group input-group-sm mb-1 mt-1">
+                            <span class="input-group-text" style="width: 113px;"> Client Numberr</span>
+                            <input type="text" name="folder" value="{{matter.Client_Number}}"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="input-group input-group-sm mb-1 mt-1">
+                            <span class="input-group-text" style="width: 113px;"> Client Name</span>
+                            <input type="text" name="folder" value="{{client.ClientName}}"
+                                class="form-control" readonly>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;"> Account # </span>
+                            <input type="text" name="folder" value="{{matter.ApplicationNo}}"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Trademark </span>
+                            <input type="text" style="font-weight: bold; font-size: large;" name="folder" value="{{matter.Case1}}"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Applicant </span>
+                            <input type="text" name="folder" value="{{matter.Applicant}}"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Client Reference</span>
+                            <input type="text" name="folder" value="{{matter.ClientRefNo}}"
+                                class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Application No. </span>
+                            <input type="text" name="folder" value="{{matter.PatAppNo}}"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;"> Application Date </span>
+                            <input type="text" name="folder"
+                                value="{{matter.ApplicationDate}}" class="form-control"
+                                readonly>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Serial Number </span>
+                            <input type="text" name="folder" value="{{matter.Serial_Number}}"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Serial Date </span>
+                            <input type="text" name="folder" value="{{matter.Serial_Date}}"
+                                class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Certificate Number </span>
+                            <input type="text" name="folder" value="{{matter.RegistrationDate}}"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Application Status </span>
+                            <input type="text" name="folder" value="{{matter.ApplicationStatus}}"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Status </span>
+                            <input type="text" name="folder" value="{{matter.ApplicationStatus}}" class="form-control"
+                                readonly>
+                        </div>
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">App Type </span>
+                            <input type="text" name="folder" value="{{matter.ApplicationType}}" class="form-control"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;"> Filing Date </span>
+                            <input type="text" name="folder" value="{{ matter.filing_date | date:'m/d/Y'}}"
+                                class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">File/Case# </span>
+                            <input type="text" name="folder" value="{{matter.matterno}}"
+                                class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Case Type </span>
+                            <input type="text" name="folder" value="{{matter.case_type}}"
+                                class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="h6 pb-2 mb-2 text-success border-bottom border-success">
+                        <b>IPO Assignments</b>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">App No.</span>
+                            <input type="text" name="folder" value="{{matter.PatAppNo}}"
+                                class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Date Filed </span>
+                            <input type="text" name="folder"
+                                value="{{matter.ApplicationDate | date:'m/d/Y'}}" class="form-control"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Cert. Number</span>
+                            <input type="text" name="folder" value="{{matter.Certificate_Number}}"
+                                class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Cert Date </span>
+                            <input type="text" name="folder"
+                                value="{{matter.RegistrationDate | date:'m/d/Y'}}" class="form-control"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">OG Gazette Ref</span>
+                            <input type="text" name="folder" value="{{matter.OGNumber}}"
+                                class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Publication</span>
+                            <input type="text" name="folder"
+                                value="{{matter.DateOfPublish | date:'m/d/Y'}}" class="form-control"
+                                readonly>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">IPC Number</span>
+                            <input type="text" name="folder" value="{{matter.IPCNumber }}"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Renewal Date</span>
+                            <input type="text" name="folder"
+                                value="{{matter.Renewal | date:'m/d/Y' }}" class="form-control"
+                                readonly>
+                        </div>
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">IR Renewal Date</span>
+                            <input type="text" name="folder"
+                                value="{{matter.IR_renewalDate | date:'m/d/Y' }}" class="form-control"
+                                readonly>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">IR Date</span>
+                            <input type="text" name="folder" value="{{matter.IR_date | date:'m/d/Y' }}"
+                                class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">IPC Date</span>
+                            <input type="text" name="folder"
+                                value="{{matter.ipc_appdate | date:'m/d/Y' }}" class="form-control"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="h6 pb-2 mb-2 text-success border-bottom border-success">
+                        <b>Other Information</b>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Status </span>
+                            <input type="text" name="folder" value="{{matter.status}}"
+                                class="form-control" readonly>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Withdrawal Date</span>
+                            <input type="text" name="folder" value="{{matter.reason_withdrawn}}"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Abandon Date</span>
+                            <input type="text" name="folder" value="{{matter.date_of_Withdrawn}}"
+                                class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Created</span>
+                            <input type="text" name="folder" value="{{matter.created_at}}"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Updated</span>
+                            <input type="text" name="folder" value="{{matter.modified_at}}"
+                                class="form-control" readonly>
+                        </div>
+                        <div class="input-group input-group-sm mb-1">
+                            <span class="input-group-text" style="width: 113px;">Stage</span>
+                            <input type="text" name="folder" value="{{matter.stage_group}}"
+                                class="form-control" readonly>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

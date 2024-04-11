@@ -1,0 +1,92 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+Data Migration - Tasks
+{% endblock title %}
+
+{% block content %}
+<div class="d-flex">
+    {% include 'layout/sidebar.html' %}
+    <div class="w-100">
+        {% include 'layout/header.html' %}
+        <div class="my-3 mx-3">
+            {% include 'layout/subheader.html' %}  
+            <div class="card-header text-center text-white bg-primary">
+                <b>{{ matter.Case1 }} - {{ matter.PatAppNo}}</b>
+            </div>            
+                <div class="card mb-2">
+                    <div class="card-header text-center mb-2" style=" color: black; background-color:rgb(228, 248, 188);">
+                        <b>Activities (In/Out Activities) </b>
+                    </div>
+                    <table class="table-hover table-bordered table-sm small table" id="csv_tasklist">
+                        <thead class="table-primary text-center">
+                            <tr>
+                                <th scope="col" style="width:3%;">#</th>
+                                <th scope="col" style="width:15%;">Client Number</th>
+                                <th scope="col" style="width:10%;">Account #</th>
+                                <th scope="col" style="width:15%;">Activity Date</th>
+                                <th scope="col" style="width:10%;">Prepared By</th>
+                                <th scope="col" style="width:8%;">Particulars</th>
+                                <th scope="col" style="width:5%;">Select</th>
+
+                            </tr>
+                        </thead>
+                        {% for task in tasks %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{ task.ClientNo }}</td>
+                            <td>{{ task.ApplicationNo }}</td>
+                            <td>{{ task.ActivityDate }}</td>
+                            <td>{{ task.CaseOfficer }}</td>
+                            <td>{{ task.TaskDescription }}</td>
+                            <td style="text-align: center;"><a class="btn btn-secondary btn-sm"
+                                    href="#" title="Select"><i
+                                        class="far fa-hand-pointer"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </table>
+                </div>
+                <div class="card">
+                    <div class="card-header text-center mb-2" style=" color: black; background-color:rgb(228, 248, 188);">
+                        <b>Due Dates</b>
+                    </div>
+                    <table class="table-hover table-bordered table-sm small table" id="csv_duedatelist">
+                        <thead class="table-primary text-center">
+                            <tr>
+                                <th scope="col" style="width:3%;">#</th>
+                                <th scope="col" style="width:5%;">Client Number</th>
+                                <th scope="col" style="width:5%;">Account #</th>
+                                <th scope="col" style="width:5%;">Due Date</th>
+                                <th scope="col" style="width:5%;">Due Code</th>
+                                <th scope="col" style="width:20%;">Activities</th>
+                                <th scope="col" style="width:5%;">Date Complied</th>
+                                <th scope="col" style="width:20%;">Remarks</th>
+                                <th scope="col" style="width:5%;">Select</th>
+    
+                            </tr>
+                        </thead>
+                        {% for due in duedates %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{ due.ClientNo }}</td>
+                            <td>{{ due.ApplicationNo }}</td>
+                            <td>{{ due.DueDates | date:'m/d/Y' }}</td>
+                            <td>{{ due.DueCode }}</td>
+                            <td>{{ due.Activities }}</td>
+                            <td>{{ due.DateComplied | date:'m/d/Y' }}</td>
+                            <td>{{ due.Remarks }}</td>
+                            <td style="text-align: center;"><a class="btn btn-secondary btn-sm"
+                                    href="#" title="Select"><i
+                                        class="far fa-hand-pointer"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+    
+                    </table>
+    
+                </div>
+       </div>
+    </div>
+</div>
+{% endblock content %}

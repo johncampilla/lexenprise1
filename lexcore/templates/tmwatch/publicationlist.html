@@ -1,0 +1,52 @@
+{% extends 'layout/base.html' %} {% block title %} TM Watch List {% endblock %}
+{% block content %}
+<div class="d-flex">
+  {% include 'layout/sidebar.html' %}
+  <div class="w-100">
+    {% include 'layout/header.html' %}
+    <div class="my-3 mx-3">
+      {% include 'layout/subheader_tmwatch.html' %}
+      <div class="card">
+        <div
+          class="card-header text-center mb-2"
+          style="color: black; background-color: rgb(228, 248, 188)"
+        >
+          <b>E-Gazette From IPO </b>
+        </div>
+        <table
+          class="table-hover table-bordered table-sm small table"
+          id="clientlist"
+        >
+          <!-- <table class="table-hover table-sm table-bordered small table table-dark table-striped">         -->
+          <thead class="table-primary text-center">
+            <tr>
+              <th scope="col" style="width: 3%">#</th>
+              <th scope="col" style="width: 15%">Application_Number</th>
+              <th scope="col" style="width: 10%">Filing Date</th>
+              <th scope="col" style="width: 30%">Mark</th>
+              <th scope="col" style="width: 30%">Applicant</th>
+              <th scope="col" style="width: 25%">Nice_class</th>
+              <!-- <th scope="col" style="width: 5%">Select</th> -->
+            </tr>
+          </thead>
+          {% for og in gazette %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{og.Application_Number}}</td>
+            <td>{{og.Filing_Date}}</td>
+            <td>{{og.Mark }}</td>
+            <td>{{og.Applicant }}</td>
+            <td>{{og.Nice_class }}</td>
+            <!-- <td style="text-align: center">
+              <a class="btn btn-secondary btn-sm" href="#" title="Select"
+                ><i class="far fa-hand-pointer"></i
+              ></a>
+            </td> -->
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

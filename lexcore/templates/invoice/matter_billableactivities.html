@@ -1,0 +1,136 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+Client Details
+{% endblock title %}
+
+{% block content %}
+<div class="d-flex">
+    {% include 'layout/sidebar.html' %}
+    <div class="w-100">
+        {% include 'layout/header.html' %}
+        <div class="my-3 mx-3">
+            <div class="card">
+                <div class="col-lg-8">
+                    <a href="{% url 'invoice-matter' matter.id %}" class ="btn btn-secondary mt-1 mb-1" >Prepare Invoice</a>
+
+                </div>
+                <div class="card-header text-center text-white sm bg-primary">
+                    <b>Preparing Invoice For - {{matter.matter_title}}</b>
+                </div>
+
+                <div class="card-header text-center mb-1" style=" color: black; background-color:rgb(228, 248, 188);">
+                    Services Rendered (PF)
+                </div>
+                <table class="table-hover table-bordered table-sm small table">
+                    <thead class="table-primary text-center">
+                        <tr>
+                            <th scope="col" style="width:3%;">#</th>
+                            <th scope="col" style="width:10%;">Tran Date</th>
+                            <th scope="col" style="width:10%;">Status</th>
+                            <th scope="col" style="width:52%;">Service Rendered</th>
+                            <th scope="col" style="width:10%;">Amount (USD)</th>
+                            <th scope="col" style="width:10%; text-align: right;">Amount (PhP)</th>
+                            <th colspan="2" style="width:5%;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pf in tempbills %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ pf.tran_date | date:'m/d/Y' }}</td>
+                            <td style="font-weight: bold;">{{ pf.status }}</td>
+                            <td>{{ pf.service_rendered }}</td>
+                            <td style="text-align: right;">{{ pf.USDamount }}</td>
+                            <td style="text-align: right;">{{ pf.PhPamount }}</td>
+                            <td>
+                                <a class="btn btn-secondary btn-sm" href="{% url 'invoice-toOpen' pf.id %}"
+                                    title="Include"><i class="fas fa-plus"></i></a>
+                            </td>
+                            <td><a class="btn btn-secondary btn-sm" href="{% url 'invoice-editPF' pf.id %}"
+                                    title="Modify"><i class="fas fa-edit"></i></a>
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="card-header text-center mb-1" style=" color: black; background-color:rgb(228, 248, 188);">
+                    Filing Fees
+                </div>
+
+                <table class="table-hover table-bordered table-sm small table">
+                    <thead class="table-primary text-center">
+                        <tr>
+                            <th scope="col" style="width:3%;">#</th>
+                            <th scope="col" style="width:10%;">Tran Date</th>
+                            <th scope="col" style="width:10%;">Status</th>
+                            <th scope="col" style="width:52%;">Filing Particulars</th>
+                            <th scope="col" style="width:10%;">Amount (USD)</th>
+                            <th scope="col" style="width:10%;">Amount (PhP)</th>
+                            <th colspan="2" style="width:5%;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for fees in tempfees %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ fees.tran_date | date:'m/d/Y' }}</td>
+                            <td style="font-weight: bold;">{{ fees.status }}</td>
+                            <td>{{ fees.filing_particulars }}</td>
+                            <td style="text-align: right;">{{ fees.USDamount }}</td>
+                            <td style="text-align: right;">{{ fees.PhPamount }}</td>
+                            <td>
+                                <a class="btn btn-secondary btn-sm" href="{% url 'invoice-feesOpen' fees.id %}"
+                                    title="Include"><i class="fas fa-plus"></i></a>
+                            </td>
+                            <td><a class="btn btn-secondary btn-sm"
+                                    href="{% url 'invoice-editfees' fees.id %}" title="Modify"><i
+                                        class="fas fa-edit"></i></a>
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="card-header text-center mb-1" style=" color: black; background-color:rgb(228, 248, 188);">
+                    Out Of Pocket Expenses
+                </div>
+
+                <table class="table-hover table-bordered table-sm small table">
+                    <thead class="table-primary text-center">
+                        <tr>
+                            <th scope="col" style="width:3%;">#</th>
+                            <th scope="col" style="width:10%;">Tran Date</th>
+                            <th scope="col" style="width:10%;">Status</th>
+                            <th scope="col" style="width:52%;">Expense Particulars</th>
+                            <th scope="col" style="width:10%;">Amount (USD)</th>
+                            <th scope="col" style="width:10%;">Amount (PhP)</th>
+                            <th colspan="2" style="width:5%;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ope in tempOPE %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ ope.tran_date | date:'m/d/Y' }}</td>
+                            <td style="font-weight: bold;">{{ ope.status }}</td>
+                            <td>{{ ope.expnse_particulars }}</td>
+                            <td style="text-align: right;">{{ ope.USDamount }}</td>
+                            <td style="text-align: right;">{{ ope.PhPamount }}</td>
+                            <td>
+                                <a class="btn btn-secondary btn-sm" href="{% url 'invoice-OPEOpen' ope.id %}"
+                                    title="Include"><i class="fas fa-plus"></i></a>
+                            </td>
+                            <td><a class="btn btn-secondary btn-sm" href="{% url 'invoice-editOPE' ope.id %}" title="Modify"><i
+                                        class="fas fa-edit"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
