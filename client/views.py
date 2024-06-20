@@ -95,37 +95,24 @@ def SelectClient(request, pk):
     }
 
     return render(request, 'client/client_detail.html', context)
+
 @login_required
 def newclient(request):
-#    client = Client_Data.objects.get(id=pk)
     if request.method == 'POST':
         form = ClientForm(request.POST)
         if form.is_valid():
             form.save()
-            # print('Ok naman pala bro!')
-            # messages.success(request, "Employee has been successfully added!")
-            # subject = "Added you in our System"
-            # message = "Dear Customer, we added your profile in our system. Thanks for trusting us! "
-            # email = 'jclextrim@gmail.com'
-            # recipient_list = [email]
-            # send_mail(subject, message, EMAIL_HOST_USER, recipient_list, fail_silently=True)
-
             return redirect('client-index')        
         else:
             form = ClientForm()
     else:
         form = ClientForm()
+    
+    context = {
+        'form' : form,
+    }
 
-#     context = {
-#         'form' : form,
-# #        'client': client,
-#     }
-#     return render(request, 'client/add_client.html', context)
-#            return redirect('select-client', pk)
-#            client_rec = form.save(commit=False)
-#            client_rec.save()
-#            duedate_rec.matter_id = matter.id
-#            duedate_rec.save()   
+    return render(request, 'client/new_client.html', context)
 
 @login_required
 def newclient_matter(request, pk):
@@ -165,7 +152,7 @@ def editclientmatter(request, pk, cid):
         'client': client,
     }
     return render(request, 'client/editclientmatter.html', context)
-@login_required    
+
 def editclient(request, pk):
     client = Client_Data.objects.get(id = pk)
     if request.method == 'POST':

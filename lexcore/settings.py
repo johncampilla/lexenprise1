@@ -21,14 +21,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-d+m^^4+0bqm$sv7==)@h6r5s8iad94oim+cn3_o74)dw37ez0s'
-
+#SECRET_KEY = 'django-insecure-d+m^^4+0bqm$sv7==)@h6r5s8iad94oim+cn3_o74)dw37ez0s'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-DEBUG =True
-ALLOWED_HOSTS = ['*']
+#DEBUG =True
+DEBUG = config('DEBUG', cast=bool)
+#DEBUG = False
+
+#ALLOWED_HOSTS = [".awsapprunner.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -112,15 +116,31 @@ WSGI_APPLICATION = 'lexcore.wsgi.application'
 
 # ==============My Postgresql in local ==================
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lexcoredb',
-        'USER': 'postgres',
-        'PASSWORD':'640515john',
-        'HOST':'localhost',
-        'PORT':'5432',
-    }
+     'default': {
+         'ENGINE': 'django.db.backends.postgresql',
+         'NAME': config('NAME'),
+         'USER': config('USER'),
+         'PASSWORD': config('PASSWORD'),
+         'HOST': config('HOST'),
+         'PORT': '5432',
+     }
  }
+
+
+#==================For Cloud Database======================================
+#This database resides in AWS
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config('NAME'),
+#         'USER': config('USER'),
+#         'PASSWORD': config('PASSWORD'),
+#         'HOST': config('HOST'),
+#         'PORT': '5432',
+#     }
+# }
+#============================================================================
+
 
 
 # Password validation
@@ -154,7 +174,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -167,9 +186,9 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "lexcore/static"),)
 MEDIA_ROOT = BASE_DIR/ 'media'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Default primary key field type
@@ -178,18 +197,32 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+#==================For AWS Cloud Database======================================
 
+# AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = 'lexcore-bucket'
+# AWS_S3_SIGNATURE_NAME = 's3v4',
+# AWS_S3_REGION_NAME = 'ap-southeast-1'
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL =  None
+# AWS_S3_VERITY = True
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#==================For Cloud Database======================================
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.Emailbackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 #EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_USER = 'digitaljclextrim@gmail.com'
-EMAIL_HOST_PASSWORD = 'tmvczpjtjclacpnn'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 #EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = "LEXTRIM"
 
 
 # EMAIL_USE_SSL = False
-COMPANY_NAME = 'Law Firm Name'
+COMPANY_NAME = config('COMPANY_NAME')
 EXCHANGE_RATE = 44.00
+TEMPLATE_DIR = config('TEMPLATE_DIR')
+DOCUMENTS = config('DOCUMENTS')

@@ -1,0 +1,49 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+Due Date 
+{% endblock title %}
+
+{% block content %}
+<div class="d-flex">
+    {% include 'layout/sidebar.html' %}
+    <div class="w-100">
+        {% include 'layout/header.html' %}
+        <div class="my-3 mx-3">
+            Due Dates From <b>{{ fromdate }}</b> to <b>{{ todate }}</b>
+            <table class="table-hover table-bordered table-sm small table">
+                <thead class="table-primary text-center">
+                    <tr>
+                        <th scope="col" style="width:3%;">#</th>
+                        <th scope="col" style="width:5%;">Due Date</th>
+                        <th scope="col" style="width:30%;">Client</th>
+                        <th scope="col" style="width:30%;">Title</th>
+                        <th scope="col" style="width:5%;">Lawyer</th>
+                        <th scope="col" style="width:5%;">App Type</th>
+                        <th scope="col" style="width:20%;">Particulars</th>
+                        <th scope="col" style="width:5%;">Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for due in duedate %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td class="text-center">{{ due.duedate | date:'m/d/Y' }}</td>
+                        <td>{{ due.matter.folder.client.client_name }}</td>
+                        <td>{{ due.matter.matter_title }}</td>
+                        <td>{{ due.matter.handling_lawyer }}</td>
+                        <td>{{ due.matter.apptype }}</td>
+                        <td>{{ due.particulars }}</td>
+                        <td style="text-align: center;"><a class="btn btn-primary btn-sm" href="{% url 'select-matter' due.matter_id %}"
+                                title="Select Matter"><i class="fas fa-edit"></i></a>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a class="btn btn-primary btn-sm" href="#" title="Select Matter"><i class="fas fa-edit"></i> Generate Reminder Template</a>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

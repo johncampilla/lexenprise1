@@ -1,0 +1,35 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block title %}
+Home
+{% endblock title %}
+{% block content %}
+<div class="d-flex">
+    {% include 'layout/mainsidebar.html' %}
+    <div class="w-100">
+        {% include 'layout/mainheader.html' %}
+
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <div class="my-3 mx-3">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header mb-2 text-center"
+                            style=" color: black; background-color:rgb(228, 248, 188);">
+                            <h4>Sign Up</h4>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" autocomplete="off">
+                                {% csrf_token %}
+                                {{ form }}
+                                <input type="submit" value="Register" />
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -4,10 +4,11 @@ from xhtml2pdf import pisa
 from django.shortcuts import render, redirect
 from client.models import Client_Data
 from casefolder.models import CaseFolder
-from matter.models import Matters, IP_Matter
+from matter.models import Matters, IP_Matter, AppDueDate
 from invoice.models import AccountsReceivable
 from chatter.models import inboxmessage
 from activity.forms import ActivityForm
+from dashboard.forms import DueDateEntryForm
 from .models import *
 from datetime import date, datetime, timedelta
 from django.http import JsonResponse
@@ -509,7 +510,9 @@ def reports(request):
 
 def selectreportgroup(request, pk):
     report = reportlist.objects.get(id=pk)
+    print(report)
     reports = reportlist.objects.filter(reportgroup = report.reportgroup)
+    print(reports)
     
     context = {
         'reports' : reports,
@@ -519,29 +522,55 @@ def selectreportgroup(request, pk):
 
 
 def selectedreport(request, pk):
+    form = DueDateEntryForm()
     report = reportlist.objects.get(id=pk)
-
-    if report.reportdetail == "List Of Clients by Matters" :
-        datareport = Matters.objects.all().order_by('matter_title')
-        reporttemplate = 'dashboard/reports/client_report_1.html'
-#        return render(request, reporttemplate , context)
-    if report.reportdetail == "List Of Clients By Industry" :
-        datareport = Client_Data.objects.all().order_by('industry', 'client_name')
-        reporttemplate = 'dashboard/reports/client_report_2.html'
-    if report.reportdetail == "List Of Clients By Folder" :
-        datareport = CaseFolder.objects.all().order_by('-folder_type', 'client')
-        reporttemplate = 'dashboard/reports/client_report_3.html'
-    if report.reportdetail == "List Of Clients By Country" :
-        datareport = Client_Data.objects.all().order_by('country', 'client_name')
-        reporttemplate = 'dashboard/reports/client_report_4.html'
-        
-        
+    if report.reportgroup == 'Client':
+        if report.reportdetail == "List Of Clients by Matters" :
+            datareport = Matters.objects.all().order_by('matter_title')
+            reporttemplate = 'dashboard/reports/client_report_1.html'
+    #        return render(request, reporttemplate , context)
+        if report.reportdetail == "List Of Clients By Industry" :
+            datareport = Client_Data.objects.all().order_by('industry', 'client_name')
+            reporttemplate = 'dashboard/reports/client_report_2.html'
+        if report.reportdetail == "List Of Clients By Folder" :
+            datareport = CaseFolder.objects.all().order_by('-folder_type', 'client')
+            reporttemplate = 'dashboard/reports/client_report_3.html'
+        if report.reportdetail == "List Of Clients By Country" :
+            datareport = Client_Data.objects.all().order_by('country', 'client_name')
+            reporttemplate = 'dashboard/reports/client_report_4.html'
+    if report.reportgroup == 'Due Dates':
+        if report.reportdetail == "Print Due Dates by Date Range (From & To)" :
+            datareport = Client_Data.objects.all().order_by('country', 'client_name')
+            reporttemplate = 'dashboard/reports/due_date.html'
+        if report.reportdetail == "Print Due Dates of a Specific Client" :
+            datareport = Client_Data.objects.all().order_by('country', 'client_name')
+            reporttemplate = 'dashboard/reports/due_date_1.html'
     
     context = {
         'datareport' : datareport,
         'report' : report,
+        'form' : form,
     }
     return render(request, reporttemplate , context)
+
+def generate_duedate(request):
+    form = DueDateEntryForm(request.POST)
+    if request.method == 'POST':
+#        lawyer = request.POST['lawyer']
+#        apptype = request.POST['apptype']
+        datef = request.POST['fdate']
+        datet = request.POST['tdate']
+        try:
+            duedate = AppDueDate.objects.filter(duedate__gte=datef, duedate__lte=datet)
+        except:
+            duedate = None
+        context =  {
+            'duedate': duedate,
+            'fromdate': datef,
+            'todate': datet,
+        }
+        
+    return render(request, 'dashboard/reports/due_date_1.html', context)
 
 def client_report_1_pdf_view(request,pk):
     report = reportlist.objects.get(id=pk)

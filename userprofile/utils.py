@@ -12,7 +12,7 @@ def send_otp(request):
     
 
     request.session['otp_secret_key'] = totp.secret
-    valid_date = datetime.now() + timedelta(minutes=5)
+    valid_date = datetime.now() + timedelta(minutes=15)
     request.session['otp_valid_date'] = str(valid_date)
 
     print(f"Your one-time-password is:{otp}")

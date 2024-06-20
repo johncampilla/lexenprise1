@@ -20,6 +20,7 @@ def folderlist(request):
     
     #print(folder_result)
     #.filter(folder__client_id = pk).order_by('-NoOfMatters')
+
     form = NewCaseFolderForm()
     
     context = {
@@ -82,13 +83,26 @@ def folder_listmatters(request, pk):
 @login_required
 def newcasefolder(request):
     if request.method == 'POST':
-        form = CaseFolderForm(request.POST)
+        form = NewCaseFolderForm(request.POST)
         if form.is_valid():
             folder_rec = form.save(commit=False)
             folder_rec.client_id = request.POST['client']
             folder_rec.save()
 #            form.save()
             return redirect('folder-index')
+        else:
+            form = NewCaseFolderForm()
+    else:
+        form = NewCaseFolderForm()
+    
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'casefolder/newfolder.html', context)
+    
+
+        
 
 
 def modify_folder(request, pk):

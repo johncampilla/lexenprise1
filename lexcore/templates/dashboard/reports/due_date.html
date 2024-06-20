@@ -1,0 +1,51 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+Due Date Parameter
+{% endblock title %}
+
+{% block content %}
+<div class="d-flex">
+    {% include 'layout/sidebar.html' %}
+    <div class="w-100">
+        {% include 'layout/header.html' %}
+        <div class="my-3 mx-3">
+            <form action="{% url 'generate-duedate' %}" method="POST" class="row g-1">   
+                {% csrf_token %}         
+                <!-- <div class="input-group input-group-sm mb-1">
+                    <span class="input-group-text" name = 'lawyer' style="width: 120px;">Lawyer</span>
+                    {{form.Lawyer}}
+                </div>              -->
+                <!-- <div class="input-group input-group-sm mb-1">
+                    <span class="input-group-text" name = 'apptype' style="width: 120px;">ApplicationType</span>
+                    {{form.AppType}}
+                </div>              -->
+                <!-- <div class="input-group input-group-sm mb-1">
+                    <span class="input-group-text"
+                        style="width: 110px; font-weight: bold;">ApplicationType</span>
+                    <input type="text" aria-label = 'apptype' class="form-control">
+                    {{form.AppType}}
+                </div>            
+                <div class="input-group input-group-sm mb-1">
+                    <span class="input-group-text"
+                        style="width: 110px; font-weight: bold;">Lawyer</span>
+                    <input type="text" aria-label = 'lawyer' class="form-control">
+                    {{form.Lawyer}}
+                </div>             -->
+
+                <div class="input-group input-group-sm mb-1">
+                    <span class="input-group-text"
+                        style="width: 110px; font-weight: bold;">From Date</span>
+                    <input type="date" name = 'fdate' class="form-control">
+                </div>            
+                <div class="input-group input-group-sm mb-1">
+                    <span class="input-group-text"
+                        style="width: 110px; font-weight: bold;">To Date</span>
+                    <input type="date" name = 'tdate' class="form-control">
+                </div>  
+                <button type="submit" class="btn btn-secondary btn-sm"><i class="far fa-hand-pointer"></i> Generate</button>
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -23,6 +23,7 @@ import pyotp
 def index(request):
     return render(request, 'user/index.html')
 
+
 def register(request):
     form = CreateUserForm()
     if request.method == 'POST':
@@ -30,17 +31,22 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect('login')
-        
+        else:
+            form = CreateUserForm()
+    else:
+        form = CreateUserForm()
+    
     context = {
         'form' : form
     }
-    return render(request, 'user/register.html', context)
+#    return render(request, 'user/register.html', context)
+    return render(request, 'user/signup.html', context)
 
 @login_required
 def mylogin(request):
     form = LoginForm()
     if request.method == 'POST':
-        print("Pumasok dito")
+#        print("Pumasok dito")
         form = LoginForm(request, data=request.POST)
         if form.is_valid():
             username = request.POST.get('username')

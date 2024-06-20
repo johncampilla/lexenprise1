@@ -15,6 +15,9 @@ urlpatterns = [
 
     path('lookup/definefilingfees/<int:pk>/', views.definefilingfees, name='define-fees'),
     path("lookup/addfilingfee/", views.addfees, name='add-fees'),
+    path("lookup/addtemplate/", views.addtemplate, name='add-template'),
+    path('lookup/RemoveFilingFee/<int:pk>/', views.removefilingfee, name='remove-fees'),
+    path('lookup/Removetemplate/<int:pk>/', views.removetemplate, name='remove-template'),
 
     path('lookup/removetaskcode/<int:pk>/', views.RemoveTaskCode, name='remove-taskcode'),
     

@@ -99,9 +99,7 @@ def ActivityWithTemplate(request, pk, mid):
 def generatedocs(request, pk, mid, tid):
     doc = TaskTemplates.objects.get(id=pk)
     template = templatedocs.objects.get(id = doc.template_id)
-    filename = template.filename
-
-    
+    filename = template.filename  
     matter = Matters.objects.get(id=mid)
     matter_title = matter.matter_title
     applicant = matter.applicant
@@ -110,17 +108,13 @@ def generatedocs(request, pk, mid, tid):
     certificate_no = matter.certificate_no
     registration_date = matter.registration_date
     nice_class = matter.nice_class
-
     casefolder = CaseFolder.objects.get(id = matter.folder_id)
     client = Client_Data.objects.get(id = casefolder.client_id)
     client_name = client.client_name
     client_address = client.address
     recipient = client.account_person
     email = client.email
-
-    
     doc = DocxTemplate("templates/"+filename)
-
     context = {
         'matter_title': matter_title,
         'applicant': applicant,
@@ -129,7 +123,6 @@ def generatedocs(request, pk, mid, tid):
         'certificate_no' : certificate_no,
         'registration_date':registration_date,
         'nice_class' : nice_class,
-
         #client info
         'client_name' : client_name,
         'client_address': client_address,
@@ -137,8 +130,9 @@ def generatedocs(request, pk, mid, tid):
         'email': email,
         'pk' : pk,
     }
-
+    print(context)
     doc.render(context)
+    print('pati d2', doc)
     doc.save("C:\\Documents\\"+filename)   
 
     return redirect('view-activitywtemplates', tid, mid)

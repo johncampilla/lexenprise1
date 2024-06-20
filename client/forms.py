@@ -14,6 +14,7 @@ class ClientForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'client_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'client_number': forms.TextInput(attrs={'class': 'form-control'}),
             'industry': forms.Select(attrs={'class': 'form-control', 'cols': 200, 'rows': 2}),
             'category': forms.Select(attrs={'class': 'form-control', 'cols': 200, 'rows': 2}),
             'entity_type': forms.Select(attrs={'class': 'form-control', 'cols': 200, 'rows': 2}),
@@ -25,8 +26,11 @@ class ClientForm(forms.ModelForm):
             'email': forms.TextInput(attrs={'class': 'form-control'}),
             'mobile': forms.TextInput(attrs={'class': 'form-control'}),
             'landline': forms.TextInput(attrs={'class': 'form-control'}),
+            'website': forms.TextInput(attrs={'class': 'form-control'}),
+            'account_officer': forms.TextInput(attrs={'class': 'form-control'}),
             'referredby': forms.TextInput(attrs={'class': 'form-control'}),
             'status': forms.Select(attrs={'class': 'form-control', 'cols': 200, 'rows': 2}),
+            'client_type': forms.Select(attrs={'class': 'form-control', 'cols': 200, 'rows': 2}),
             'remarks': forms.Textarea(attrs={'class': 'form-control', 'cols': 200, 'rows': 2}),
             'date_acquired': NumberInput(attrs={'type': 'date','class':'form-control'}),
             'billing_to': forms.TextInput(attrs={'class': 'form-control'}),

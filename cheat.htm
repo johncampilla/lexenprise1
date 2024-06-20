@@ -23,3 +23,22 @@
     <input type="text" value="{{matter.matter_title}}" class="form-control"
         readonly>
 </div>
+
+<!-- button with icon-->
+<a class="btn btn-primary btn-sm" href="#" title="Select Matter"><i class="fas fa-edit"></i> Generate Reminder Template</a>
+
+<button type="button" class="btn btn-outline-primary">Primary</button>
+<button type="submit" class="btn btn-secondary btn-sm"><i class="far fa-hand-pointer"></i> Generate</button>
+
+<!-- for redirect / turning back to previous page-->
+
+def NewClassOfGoods(request):
+    if request.method == 'POST':
+        form = ClGoodsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('select-matter', request.POST['matter'])
+
+<!-- for redirect / turning back to previous page
+    you may want to look at the views. py of reference lookup and the method name are addfees or addtemplate
+-->

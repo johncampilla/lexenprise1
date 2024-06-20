@@ -55,6 +55,10 @@ class Client_Data(models.Model):
         ('Dormant', 'Dormant'),
         ('Delinquent', ' Delinquent')
     )
+    CLIENTTYPE = (
+        ('Foreign', 'Foreign'),
+        ('Local', 'Local')
+    )
 
     client_number = models.CharField(max_length=30, blank=True, null=True)
     entity_type = models.CharField(max_length=20, choices=ENTITYTYPE, null=True, blank=True)
@@ -74,8 +78,8 @@ class Client_Data(models.Model):
     country = CountryField(blank_label="(select country)", blank=True)
     industry = models.ForeignKey(NatureOfBusiness, on_delete=models.CASCADE, null=True)
     date_entered = models.DateField(null=True, blank=True)
-    client_type = models.CharField(max_length=1, blank=True, null=True) 
-    account_officer = models.CharField(max_length = 50, blank=True, null=True) 
+    client_type = models.CharField(max_length=10, choices=CLIENTTYPE, null=True, blank=True)
+    account_officer = models.CharField(max_length=50, blank=True, null=True)
     account_person = models.CharField(max_length = 50, blank=True, null=True)
     mobile = models.CharField(max_length=200, null=True, blank=True)
     status = models.CharField(max_length=15, choices=STATUS, default="Active")

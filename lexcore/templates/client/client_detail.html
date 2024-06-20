@@ -57,11 +57,16 @@ Client Details
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="input-group input-group-sm mb-1 mt-1">
+                                <span class="input-group-text" style="width: 113px;"> Client Number</span>
+                                <input type="text" name="folder" value="{{client.client_number}}" class="form-control"
+                                    readonly>
+                            </div>
+                            <div class="input-group input-group-sm mb-1">
                                 <span class="input-group-text" style="width: 113px;"> Client Name</span>
                                 <input type="text" name="folder" value="{{client.client_name}}" class="form-control"
                                     readonly>
                             </div>
-                            <div class="input-group input-group-sm mb-1 mt-1">
+                            <div class="input-group input-group-sm mb-1">
                                 <span class="input-group-text" style="width: 113px;"> Address</span>
                                 <input type="text" name="folder" value="{{client.address}}" class="form-control"
                                     readonly>
@@ -73,6 +78,38 @@ Client Details
                             <div class="input-group input-group-sm mb-1">
                                 <span class="input-group-text" style="width: 113px;"> State </span>
                                 <input type="text" name="folder" value="{{client.state}}" class="form-control" readonly>
+                            </div>
+                            <div class="input-group input-group-sm mb-1">
+                                <span class="input-group-text" style="width: 113px;"> Country Code </span>
+                                <input type="text" name="folder" value="{{client.country}}" class="form-control"
+                                    readonly>
+                            </div>
+                            <div class="input-group input-group-sm mb-1">
+                                <span class="input-group-text" style="width: 113px;"> Zip Code </span>
+                                <input type="text" name="folder" value="{{client.zip_code}}" class="form-control"
+                                    readonly>
+                            </div>
+                            <div class="input-group input-group-sm mb-1">
+                                <span class="input-group-text" style="width: 113px;"> Web Site </span>
+                                <input type="text" name="folder" value="{{client.website}}" class="form-control"
+                                    readonly>
+                            </div>
+                            <div class="input-group input-group-sm mb-1">
+                                <span class="input-group-text" style="width: 113px;"> Account Officer </span>
+                                <input type="text" name="folder" value="{{client.account_officer}}" class="form-control"
+                                    readonly>
+                            </div>
+                            <div class="input-group input-group-sm mb-1">
+                                <span class="input-group-text" style="width: 113px;"> Position </span>
+                                <input type="text" name="folder" value="{{client.position}}" class="form-control"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="input-group input-group-sm mb-1 mt-1">
+                                <span class="input-group-text" style="width: 113px;"> Date Acquired </span>
+                                <input type="text" name="folder" value="{{ client.date_acquired}}" class="form-control"
+                                    readonly>
                             </div>
                             <div class="input-group input-group-sm mb-1">
                                 <span class="input-group-text" style="width: 113px;"> Entity Type </span>
@@ -90,6 +127,11 @@ Client Details
                                     readonly>
                             </div>
                             <div class="input-group input-group-sm mb-1 mt-1">
+                                <span class="input-group-text" style="width: 113px;"> Client Type </span>
+                                <input type="text" name="folder" value="{{ client.client_type }}" class="form-control"
+                                    readonly>
+                            </div>
+                            <div class="input-group input-group-sm mb-1 mt-1">
                                 <span class="input-group-text" style="width: 113px;"> Email </span>
                                 <input type="text" name="folder" value="{{ client.email }}" class="form-control"
                                     readonly>
@@ -104,25 +146,35 @@ Client Details
                                 <input type="text" name="folder" value="{{ client.mobile }}" class="form-control"
                                     readonly>
                             </div>
-                            <div class="input-group input-group-sm mb-1 mt-1">
-                                <span class="input-group-text" style="width: 113px;"> Date Acquired </span>
-                                <input type="text" name="folder" value="{{ client.date_acquired}}" class="form-control"
-                                    readonly>
-                            </div>
-                            <div class="input-group input-group-sm mb-1 mt-1">
+
+                            <div class="input-group input-group-sm mb-1">
                                 <span class="input-group-text" style="width: 113px;"> Status </span>
                                 <input type="text" name="folder" value="{{ client.status}}" class="form-control"
                                     readonly>
                             </div>
-                            <div class="input-group input-group-sm mb-1 mt-1">
+                            <div class="input-group input-group-sm mb-1">
+                                <span class="input-group-text" style="width: 113px;"> Referred By </span>
+                                <input type="text" name="folder" value="{{ client.referredby}}" class="form-control"
+                                    readonly>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="input-group input-group-sm mb-1">
                                 <span class="input-group-text" style="width: 113px;"> Remarks </span>
                                 <input type="text" name="folder" value="{{ client.remarks}}" class="form-control"
                                     readonly>
                             </div>
                         </div>
+                        <div class="h6 pb-2 mb-2 text-success border-bottom border-success">
+                            <b>Billing Information</b>
+                        </div>
+
                         <div class="col-lg-6">
-                            <div class="h6 pb-2 mb-2 text-success border-bottom border-success">
-                                <b>Billing Addressee Parameters</b>
+                            <div class="input-group input-group-sm mb-1 mt-1">
+                                <span class="input-group-text" style="width: 113px;"> Bill Attention </span>
+                                <input type="text" name="folder" value="{{ client.billing_attention }}"
+                                    class="form-control" readonly>
                             </div>
                             <div class="input-group input-group-sm mb-1 mt-1">
                                 <span class="input-group-text" style="width: 113px;"> Bill To </span>
@@ -135,19 +187,9 @@ Client Details
                                     class="form-control" readonly>
                             </div>
                             <div class="input-group input-group-sm mb-1 mt-1">
-                                <span class="input-group-text" style="width: 113px;"> Billing Currency </span>
+                                <span class="input-group-text" style="width: 113px;"> Currency </span>
                                 <input type="text" name="folder" value="{{ client.billing_currency }}"
                                     class="form-control" readonly>
-                            </div>
-                            <div class="input-group input-group-sm mb-1 mt-1">
-                                <span class="input-group-text" style="width: 113px;"> Attention To </span>
-                                <input type="text" name="folder" value="{{ client.billing_attention }}"
-                                    class="form-control" readonly>
-                            </div>
-                            <div class="input-group input-group-sm mb-1 mt-1">
-                                <span class="input-group-text" style="width: 113px;"> Position </span>
-                                <input type="text" name="folder" value="{{ client.position }}" class="form-control"
-                                    readonly>
                             </div>
                         </div>
 
@@ -196,9 +238,9 @@ Client Details
                 </div>
                 <div class="tab-pane container fade" id="folders">
                     {% comment %} {% for msg in messages %}
-                        <div class="alert alert-danger text-center" role="alert">
-                            {{ msg }} 
-                        </div>          
+                    <div class="alert alert-danger text-center" role="alert">
+                        {{ msg }}
+                    </div>
                     {% endfor%} {% endcomment %}
 
                     <a class="btn btn-secondary btn-sm mt-1" data-bs-toggle="modal" data-bs-target="#addfolderModal"
@@ -211,7 +253,7 @@ Client Details
                                 <th scope="col" style="width:30%;">Folder Description</th>
                                 <th scope="col" style="width:15%;">Supervising Lawyer</th>
                                 <th scope="col" style="width:15%;">Remarks</th>
-                                <th colspan = "2" style="width:5%;">Action</th>
+                                <th colspan="2" style="width:5%;">Action</th>
 
                             </tr>
                         </thead>
@@ -232,8 +274,8 @@ Client Details
                                             class="far fa-hand-pointer"></i></a>
                                 </td>
                                 <td><a class="btn btn-secondary btn-sm"
-                                    href="{% url 'delete-folder' folder.id client.id %}" title="Remove Folder"><i
-                                        class="fas fa-trash-alt"></i></a>
+                                        href="{% url 'delete-folder' folder.id client.id %}" title="Remove Folder"><i
+                                            class="fas fa-trash-alt"></i></a>
                                 </td>
 
 

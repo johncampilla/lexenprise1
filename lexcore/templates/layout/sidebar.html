@@ -1,26 +1,16 @@
 {% load static %} {% url 'dashboard-index' as path_to_dashboard %}
 
 <!-- <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 200px; height: 100vh;"> -->
-<div
-  class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
-  style="width: 200px"
->
-  <img src="{% static 'assets/images/RMLogo.jpeg' %}" alt="" />
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 200px">
+  <img src="{% static 'assets/images/lawfirm.jpg' %}" alt="" />
 
-  <a
-    href="/"
-    class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
-  >
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <span class="fs-4"> &nbsp;&nbsp;&nbsp;&nbsp;LEXCore</span>
   </a>
   <hr />
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a
-        href="{{ path_to_dashboard }}"
-        class="nav-link text-white"
-        aria-current="page"
-      >
+      <a href="{{ path_to_dashboard }}" class="nav-link text-white" aria-current="page">
         <i class="fas fa-chart-bar"></i>&nbsp;&nbsp;Dashboard
       </a>
     </li>
@@ -52,19 +42,16 @@
     </li>
     <li>
       <a href="{% url 'reference-index' %}" class="nav-link text-white">
-        <i class="fas fa-folder-plus"></i> Lookup Codes</a
-      >
+        <i class="fas fa-folder-plus"></i> Lookup Codes</a>
     </li>
     <li>
       <a href="{% url 'publication-list' %}" class="nav-link text-white">
-        <i class="fas fa-binoculars"></i> TM Watch</a
-      >
+        <i class="fas fa-binoculars"></i> TM Watch</a>
     </li>
 
     <li>
       <a href="{% url 'list-user' %}" class="nav-link text-white">
-        <i class="fas fa-address-card"></i>&nbsp;&nbsp; User Management</a
-      >
+        <i class="fas fa-address-card"></i>&nbsp;&nbsp; User Management</a>
     </li>
 
     <li>
@@ -75,12 +62,8 @@
   </ul>
   <hr />
   <div class="dropdown">
-    <a
-      href="#"
-      class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-      ><strong>Utilities</strong>
+    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+      data-bs-toggle="dropdown" aria-expanded="false"><strong>Utilities</strong>
     </a>
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
       <li>
@@ -96,9 +79,7 @@
         <a class="dropdown-item" href="#">Backup & Restore </a>
       </li>
       <li>
-        <a class="dropdown-item" href="{% url 'upload-list-clients' %}"
-          >Data Migration</a
-        >
+        <a class="dropdown-item" href="{% url 'upload-list-clients' %}">Data Migration</a>
       </li>
     </ul>
   </div>

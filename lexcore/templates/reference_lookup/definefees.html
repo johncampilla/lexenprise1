@@ -46,7 +46,43 @@
                                             class="fas fa-edit"></i></a>
                                 </td>
 
-                                <td><a class="btn btn-secondary btn-sm" href="#" title="Delete"><i
+                                <td><a class="btn btn-secondary btn-sm" href="{% url 'remove-fees' fee.id %}" title="Delete"><i
+                                            class="fas fa-trash-alt"></i></a>
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="col-lg-4">
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1" data-bs-toggle="modal" data-bs-target="#newtemplatecode"
+                        title="New Template"><i class="fas fa-plus"></i></a>
+                </div>
+                <div class="card">
+                    <table class="table-hover table-bordered table-sm small table">
+                        <thead class="table-primary text-center">
+                            <tr>
+                                <th scope="col" style="width:2%;">#</th>
+                                <th scope="col" style="width:15%;">File Name</th>
+                                <th scope="col" style="width:78%;">Description</th>
+                                <th colspan="2" style="width:5%;">Action</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for template in templates %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ template.template.filename }}</td>
+                                <td>{{ template.template.template_docname }}</td>
+                                <td><a class="btn btn-secondary btn-sm" href="#" title="Modify"><i
+                                            class="fas fa-edit"></i></a>
+                                </td>
+
+                                <td><a class="btn btn-secondary btn-sm" href="{% url 'remove-template' template.id %}" title="Delete"><i
                                             class="fas fa-trash-alt"></i></a>
                                 </td>
 

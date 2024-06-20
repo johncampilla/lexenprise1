@@ -1,5 +1,6 @@
 from django.db import models
 from casefolder.models import FolderType
+from client.models import Client_Data
 
 # Create your models here.
 class templatedocs(models.Model):
@@ -12,7 +13,6 @@ class templatedocs(models.Model):
 
     def __str__(self):
         return f'{self.folder} - {self.template_docname}'
-
 
 
 

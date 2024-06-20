@@ -165,6 +165,12 @@ class Matters(models.Model):
     class Meta:
         verbose_name_plural = 'Engagements/Accounts'
 
+class SelectMatters(models.Model):
+    matter = models.ForeignKey(Matters, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.matter.matter_title}'
+
 class Matter_Applicant(models.Model):
     matter = models.ForeignKey(Matters, on_delete=models.CASCADE)
     applicant = models.ForeignKey(Applicant, on_delete=models.CASCADE, blank=True, null=True)

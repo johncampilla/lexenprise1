@@ -25,6 +25,8 @@ urlpatterns = [
 
     path('dashboard/reports/', views.reports, name='reports-items'),
     path("dashboard/reports/group/<int:pk>'/", views.selectreportgroup, name='reports-group'),
+    path("dashboard/submit/duedate", views.generate_duedate, name='generate-duedate'),
+
     path("dashboard/reports/selectedreport/<int:pk>'/", views.selectedreport, name='report-selected'),
     path("dashboard/pdf/selectedreport1/<int:pk>'/", views.client_report_1_pdf_view, name='pdf-client_report_1'),
     path("dashboard/pdf/selectedreport2/<int:pk>'/", views.client_report_2_pdf_view, name='pdf-client_report_2'),

@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from . models import *
 from .forms import *
-from taskcode_settings.models import ActivityCodes, FilingFeeCodes, DueCode, DueCode_Incoming
+from taskcode_settings.forms import TaskTemplateForm
+from taskcode_settings.models import ActivityCodes, FilingFeeCodes, DueCode, DueCode_Incoming, TaskTemplates
 from client.models import *
 from casefolder.models import Status
 from matter.models import Matters
@@ -453,7 +454,14 @@ def addfees(request):
         form = FilingFeesForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('reference-index')
+            return redirect('define-fees', request.POST['ActivityCode'])
+
+def addtemplate(request):
+    if request.method == 'POST':
+        form = TaskTemplateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('define-fees', request.POST['task'])        
 
 def EditCourts(request, pk):
     courts = Courts.objects.get(id=pk)
@@ -475,6 +483,21 @@ def EditCourts(request, pk):
         'matters': matters,
     }
     return render(request, 'reference_lookup/newcourts.html', context)
+
+def removefilingfee(request, pk):
+    fee = FilingFeeCodes.objects.get(id = pk)
+    t_id = fee.ActivityCode_id 
+    print(t_id)
+    task_id = ActivityCodes.objects.get(id = t_id)
+    fee.delete()
+    return redirect('define-fees', t_id)
+
+def removetemplate(request, pk):
+    template = TaskTemplates.objects.get(id = pk)
+    t_id = template.task_id 
+    task_id = ActivityCodes.objects.get(id = t_id)
+    template.delete()
+    return redirect('define-fees', t_id)
 
 def RemoveCourts(request, pk):
     courts = Courts.objects.get(id=pk)
@@ -536,15 +559,19 @@ def NewDueCode_inward(request):
 
 def definefilingfees(request, pk):
     taskcode = ActivityCodes.objects.get(id=pk)
-    print(taskcode)
+    templates = TaskTemplates.objects.filter(task_id = pk)
+    print(templates)
     fees = FilingFeeCodes.objects.filter(ActivityCode_id = pk)
     form = FilingFeesForm()
+    form1 = TaskTemplateForm()
 
     
     context = {
         'task' : taskcode,
         'fees' : fees,
         'form' : form,
+        'form1': form1,
+        'templates':templates
     }
     return render(request, 'reference_lookup/definefees.html', context)
 
