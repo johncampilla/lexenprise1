@@ -14,10 +14,7 @@ urlpatterns = [
     path('userprofile/userlist', views.userlist, name='list-user'),
     path("userprofile/removeuser/<int:pk>/'", views.removeuser, name='remove-user'),
     path("userprofile/userinfo/<int:pk>/'", views.userinfo, name='define-userinfo'),
-    path("userprofile/lawyerinfo/<int:pk>/'", views.lawyerinfo, name='define-lawyerinfo'),
-
-
-         
+    path("userprofile/lawyerinfo/<int:pk>/'", views.lawyerinfo, name='define-lawyerinfo'),        
 
 ]
     
