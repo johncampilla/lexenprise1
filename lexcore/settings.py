@@ -118,10 +118,10 @@ WSGI_APPLICATION = 'lexcore.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.postgresql',
-         'NAME': 'postgres',
-         'USER': 'postgres',
+         'NAME': 'lexcoredb',
+         'USER': 'lexcore_admin',
          'PASSWORD': '640515John',
-         'HOST': 'postgres.cfms4k8s6k1z.ap-southeast-1.rds.amazonaws.com',
+         'HOST': 'lexcoredb-instance.cfms4k8s6k1z.ap-southeast-1.rds.amazonaws.com',
          'PORT': '5432',
      }
  }
