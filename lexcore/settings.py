@@ -107,24 +107,24 @@ WSGI_APPLICATION = 'lexcore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # ==============My Postgresql in local ==================
-# DATABASES = {
-#      'default': {
-#          'ENGINE': 'django.db.backends.postgresql',
-#          'NAME': config('NAME'),
-#          'USER': config('USER'),
-#          'PASSWORD': config('PASSWORD'),
-#          'HOST': config('HOST'),
-#          'PORT': '5432',
-#      }
-#  }
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.postgresql',
+         'NAME': 'postgres',
+         'USER': 'postgres',
+         'PASSWORD': '640515John',
+         'HOST': 'postgres.cfms4k8s6k1z.ap-southeast-1.rds.amazonaws.com',
+         'PORT': '5432',
+     }
+ }
 
 
 #==================For Cloud Database======================================

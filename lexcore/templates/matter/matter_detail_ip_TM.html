@@ -73,7 +73,11 @@ Trademark Details
                                 Reference/Lookup Codes </a>
                             <div class="row">
                                 <div class="col-lg-12">
-
+                                    <div class="input-group input-group-sm mb-1 mt-1">
+                                        <span class="input-group-text" style="width: 113px;"> Account No</span>
+                                        <input type="text" name="folder" value="{{matter.matter_id}}"
+                                            class="form-control" readonly>
+                                    </div>
                                     <div class="input-group input-group-sm mb-1 mt-1">
                                         <span class="input-group-text" style="width: 113px;"> Case Folder</span>
                                         <input type="text" name="folder" value="{{matter.folder.folder_description}}"
@@ -123,9 +127,8 @@ Trademark Details
                                     </div>
                                     <div class="input-group input-group-sm mb-1">
                                         <span class="input-group-text" style="width: 113px;"> Matter Contact </span>
-                                        <input type="text" name="folder"
-                                            value="{{matter.matter_contact_person}}" class="form-control"
-                                            readonly>
+                                        <input type="text" name="folder" value="{{matter.matter_contact_person}}"
+                                            class="form-control" readonly>
                                     </div>
 
                                     <div class="input-group input-group-sm mb-1">
@@ -260,9 +263,8 @@ Trademark Details
                                     </div>
                                     <div class="input-group input-group-sm mb-1">
                                         <span class="input-group-text" style="width: 113px;">Renewal Date</span>
-                                        <input type="text" name="folder"
-                                            value="{{matter.renewal_date | date:'m/d/Y' }}" class="form-control"
-                                            readonly>
+                                        <input type="text" name="folder" value="{{matter.renewal_date | date:'m/d/Y' }}"
+                                            class="form-control" readonly>
                                     </div>
                                     <div class="input-group input-group-sm mb-1">
                                         <span class="input-group-text" style="width: 113px;">IR Renewal Date</span>
@@ -280,9 +282,8 @@ Trademark Details
                                 <div class="col-lg-6">
                                     <div class="input-group input-group-sm mb-1">
                                         <span class="input-group-text" style="width: 113px;">IPC Date</span>
-                                        <input type="text" name="folder"
-                                            value="{{matter.ipc_appdate | date:'m/d/Y' }}" class="form-control"
-                                            readonly>
+                                        <input type="text" name="folder" value="{{matter.ipc_appdate | date:'m/d/Y' }}"
+                                            class="form-control" readonly>
                                     </div>
                                 </div>
                                 <div class="h6 pb-2 mb-2 text-success border-bottom border-success">
@@ -291,8 +292,8 @@ Trademark Details
                                 <div class="col-lg-6">
                                     <div class="input-group input-group-sm mb-1">
                                         <span class="input-group-text" style="width: 113px;">Status </span>
-                                        <input type="text" name="folder" value="{{matter.status}}"
-                                            class="form-control" readonly>
+                                        <input type="text" name="folder" value="{{matter.status}}" class="form-control"
+                                            readonly>
                                     </div>
 
                                     <div class="input-group input-group-sm mb-1">
@@ -679,4 +680,3 @@ Trademark Details
     </div>
 </div>
 {% endblock %}
-

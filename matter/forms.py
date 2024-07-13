@@ -5,11 +5,11 @@ from activity.models import task_detail
 from django.core.exceptions import ValidationError
 from django.forms.widgets import NumberInput, TextInput, Textarea, Widget
 
+
 class MatterForm(forms.ModelForm):
     class Meta:
         model = Matters
         fields = '__all__'
-#        ('matter_title', 'appearance', 'matter_contact_person', 'handling_lawyer','opposing_counsel', 'apptype', 'clientrefno', 'referenceno', 'filing_date', 'matterno', 'case_type', 'filed_at', 'nature', 'lawyers_involve', 'remarks', 'stage_group')
         required = ('matter_title','handling_lawyer','apptype', 'case_type')
         widgets = {
             'folder': forms.Select(attrs={'class': 'form-control', 'cols': 200, 'rows': 2}),

@@ -312,6 +312,7 @@ def EditMatterNonIP(request,pk):
 
     return render(request, 'matter/edit_matter_nonip.html', context)   
 
+
 @login_required
 def EditMatterTM(request, pk):
     def computeduedate():
@@ -559,100 +560,6 @@ def EditMatterINV(request, pk):
         'images': images, 
     }  
     return render(request, 'matter/edit_matter_INV.html', context)  
-
-    # if sapptype.apptype.upper() == "TRADEMARK":
-    #     return render(request, 'matter/edit_matter_TM.html', context) 
-    # elif sapptype.apptype.upper() == "INVENTION" :
-    #     return render(request, 'matter/matter_detail_ip_INV.html', context)
-    # elif sapptype.apptype.upper() == "PCT" :
-    #     return render(request, 'matter/matter_detail_ip_INV.html', context)
-    # elif sapptype.apptype.upper() == "DESIGN" :
-    #     return render(request, 'matter/matter_detail_ip_DESIGN.html', context)
-    # elif sapptype.apptype.upper() == "UTILITY MODEL" :
-    #     return render(request, 'matter/matter_detail_ip_INV.html', context)
-    # else :
-    #     return render(request, 'matter/matter_detail_nonip.html', context)
-    
-
-# @login_required
-# def Edit_IPMatter(request, pk):
-#     def computeduedate():
-#         for duecode in duecodes:
-#             sdate = None
-#             if duecode.fieldbsis == 'Application Date':
-#                 sdate = ip_matter.application_date
-#             if duecode.fieldbsis == 'Publication Date':
-#                 sdate = ip_matter.publication_date
-#             if duecode.fieldbsis == 'Registration Date':
-#                 sdate = ip_matter.registration_date
-#             if duecode.fieldbsis == 'Priority Date':
-#                 sdate = ip_matter.priority_date
-#             if duecode.fieldbsis == 'PCT Filing Date':
-#                 sdate = ip_matter.pct_appdate
-#             if duecode.fieldbsis == 'PCT Publication Date':
-#                 sdate = ip_matter.pct_pubdate
-#             if duecode.fieldbsis == 'Renewal Date':
-#                 sdate = ip_matter.renewal_date
-#             if duecode.fieldbsis == 'IR Date':
-#                 sdate = ip_matter.IR_date
-#             if duecode.fieldbsis == 'IR Renewal Date':
-#                 sdate = ip_matter.IR_renewalDate
-#             if sdate:
-#                 if duecode.basisofcompute == 'In Years':
-#                     nyears = int(duecode.terms)
-#                     svalue = ("+"+str(nyears))
-#                     duedate = sdate + relativedelta(years=int(svalue))
-
-#                 if duecode.basisofcompute == 'In Months':
-#                     nmonth = int(duecode.terms)
-#                     svalue = ("+"+str(nmonth))
-#                     duedate = sdate + relativedelta(months=int(svalue))
-
-#                 if duecode.basisofcompute == 'In Days':
-#                     ndays = int(duecode.terms)
-#                     svalue = ("+"+str(ndays))
-#                     duedate = sdate + relativedelta(days=int(svalue))
-                    
-#                 dues = AppDueDate.objects.filter(matter_id=ipmatter_rec.matter_id, duedate=duedate)
-#                 if dues.exists():
-#                     pass
-#                 else:
-#                     duedates = AppDueDate(matter_id=ipmatter_rec.matter_id, duedate=duedate, duecode_id = duecode.id, particulars=duecode.Description)
-#                     duedates.save()
-
-#     matter = Matters.objects.get(id=pk)
-#     apptype_id = matter.apptype.id
-#     sapptype = AppType.objects.get(id=apptype_id)
-#     duecodes = DueCode.objects.filter(apptype = sapptype)
-#     try:
-#         ip_matter = IP_Matter.objects.get(matter_id = pk)
-#         sappdate = ip_matter.application_date
-#     except IP_Matter.DoesNotExist:
-#         ip_matter = None
-
-#     apptype_id = matter.apptype.id
-#     sapptype = AppType.objects.get(id=apptype_id)
-#     if request.method == 'POST':
-#         form = Edit_IPTMMatterForm(request.POST, instance = ip_matter)
-#         if form.is_valid():
-#             ipmatter_rec = form.save(commit=False)
-#             ipmatter_rec.matter_id = request.POST['matter']
-#             ipmatter_rec.save() 
-#             computeduedate()
-#             return redirect('select-matter', matter.id)
-#         else:
-#             form = Edit_IPTMMatterForm(instance=ip_matter)
-#     else:
-#         form = Edit_IPTMMatterForm(instance=ip_matter)
-    
-#     context = {
-#         'form' : form,
-#         'matter' : matter,
-#         'sapptype' : sapptype, 
-#         'ip_matter' : ip_matter,      
-#     }    
-
-#     return render(request, 'matter/edit_ipmatter.html', context)   
 
 @login_required
 def EditDueDate(request, pk, mid):

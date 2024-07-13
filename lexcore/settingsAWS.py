@@ -22,17 +22,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure-d+m^^4+0bqm$sv7==)@h6r5s8iad94oim+cn3_o74)dw37ez0s'
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'django-insecure-d+m^^4+0bqm$sv7==)@h6r5s8iad94oim+cn3_o74)dw37ez0s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-#DEBUG =True
-DEBUG = config('DEBUG', cast=bool)
+DEBUG =True
+#DEBUG = config('DEBUG', cast=bool)
 #DEBUG = False
 
 #ALLOWED_HOSTS = [".awsapprunner.com"]
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ ]
 
 
 # Application definition
@@ -107,24 +107,24 @@ WSGI_APPLICATION = 'lexcore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # ==============My Postgresql in local ==================
-DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.postgresql',
-         'NAME': config('NAME'),
-         'USER': config('USER'),
-         'PASSWORD': config('PASSWORD'),
-         'HOST': config('HOST'),
-         'PORT': '5432',
-     }
- }
+# DATABASES = {
+#      'default': {
+#          'ENGINE': 'django.db.backends.postgresql',
+#          'NAME': config('NAME'),
+#          'USER': config('USER'),
+#          'PASSWORD': config('PASSWORD'),
+#          'HOST': config('HOST'),
+#          'PORT': '5432',
+#      }
+#  }
 
 
 #==================For Cloud Database======================================
@@ -215,14 +215,14 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 #EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = 'digitaljclextrim@gmail.com'
+EMAIL_HOST_PASSWORD = 'tmvczpjtjclacpnn'
 #EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = "LEXTRIM"
 
 
 # EMAIL_USE_SSL = False
-COMPANY_NAME = config('COMPANY_NAME')
+COMPANY_NAME = 'Law Firm Name'
 EXCHANGE_RATE = 44.00
-TEMPLATE_DIR = config('TEMPLATE_DIR')
-DOCUMENTS = config('DOCUMENTS')
+TEMPLATE_DIR = 'C:\\Templates\\'
+DOCUMENTS = 'C:\\Documents\\'
