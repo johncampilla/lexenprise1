@@ -164,6 +164,16 @@ class Matters(models.Model):
 
     class Meta:
         verbose_name_plural = 'Engagements/Accounts'
+    
+class MatterLitigation(models.Model):
+    matter = models.ForeignKey(Matters, on_delete=models.CASCADE)
+    party1 = models.TextField(blank=True, null=True)
+    position_1 = models.CharField(max_length=100, blank=True, null=True)
+    party2 = models.TextField(blank=True, null=True)
+    position_2 = models.CharField(max_length=100, blank=True, null=True)
+    firms_counsel = models.ForeignKey(Lawyer_Data, on_delete=models.CASCADE, blank=True, null=True)
+    opposing_counsel = models.TextField(max_length=100, blank=True, null=True)
+    
 
 class SelectMatters(models.Model):
     matter = models.ForeignKey(Matters, on_delete=models.CASCADE)

@@ -16,6 +16,7 @@ class Country(models.Model):
 
 class NatureOfBusiness(models.Model):
     industry = models.CharField(max_length=150)
+    ipw_code = models.CharField(max_length=5, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'Nature Of Business'
@@ -59,23 +60,23 @@ class Client_Data(models.Model):
         ('Foreign', 'Foreign'),
         ('Local', 'Local')
     )
-
     client_number = models.CharField(max_length=30, blank=True, null=True)
     entity_type = models.CharField(max_length=20, choices=ENTITYTYPE, null=True, blank=True)
     category = models.CharField(max_length=20, choices=CATEGORIES, null=True, blank=True)
-    client_name = models.CharField(max_length=200)
+    client_name = models.CharField(max_length=200, blank=True, null=True)
     unit_description = models.CharField(max_length=50, blank=True, null=True)    
     address = models.CharField(max_length=250, null=True)
-    city = models.CharField(max_length=50, null=True, blank=True)
-    state = models.CharField(max_length=50, null=True, blank=True)
-    country_name = models.CharField(max_length=30, blank=True, null=True)
+    street = models.CharField(max_length=60, blank=True, null=True)
+    city = models.CharField(max_length=60, null=True, blank=True)
+    state = models.CharField(max_length=60, null=True, blank=True)
+    country_name = models.CharField(max_length=60, blank=True, null=True)
     fax_number = models.CharField(max_length=25, blank=True, null=True)
     email = models.EmailField(max_length=100, null=True)
     website = models.CharField(max_length=60, null=True, blank=True )
-    zip_code = models.CharField(max_length=30, blank=True)
-    landline= models.CharField(max_length=100, blank=True)
+    zip_code = models.CharField(max_length=30, blank=True, null=True)
+    landline= models.CharField(max_length=100, blank=True, null=True)
     date_acquired = models.DateField(null=True, blank=True)
-    country = CountryField(blank_label="(select country)", blank=True)
+    country = CountryField(blank_label="(select country)", blank=True, null=True)
     industry = models.ForeignKey(NatureOfBusiness, on_delete=models.CASCADE, null=True)
     date_entered = models.DateField(null=True, blank=True)
     client_type = models.CharField(max_length=10, choices=CLIENTTYPE, null=True, blank=True)
@@ -86,12 +87,11 @@ class Client_Data(models.Model):
     remarks = models.TextField(blank=True, null=True)
     billing_currency = models.ForeignKey(Currency, on_delete=models.CASCADE, blank=True, null=True)
     entered_by = models.CharField(max_length=15, blank=True, null=True)
-    referredby = models.CharField(max_length=150, blank=True)
-    billing_to = models.CharField(max_length=100, blank=True)
-    billing_address = models.CharField(max_length=200, blank=True)
-    billing_attention = models.CharField(max_length=60, blank=True)
-    billing_currency = models.ForeignKey(Currency, on_delete=models.CASCADE, blank=True, null=True)
-    position = models.CharField(max_length=60, blank=True)
+    referredby = models.CharField(max_length=150, blank=True, null=True)
+    billing_to = models.CharField(max_length=100, blank=True, null=True)
+    billing_address = models.CharField(max_length=200, blank=True, null=True)
+    billing_attention = models.CharField(max_length=60, blank=True, null=True)
+    position = models.CharField(max_length=60, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     updatedby = models.CharField(max_length=5, null=True, blank=True)
@@ -105,11 +105,11 @@ class Client_Data(models.Model):
 
 class Contact_Person(models.Model):
     client = models.ForeignKey(Client_Data, on_delete=models.CASCADE, null=True)
-    contact_person = models.CharField(max_length=100)
-    position = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100, null=True)
-    address = models.CharField(max_length=200, null=True)
-    phone = models.CharField(max_length=100)
+    contact_person = models.CharField(max_length=100, blank=True, null=True)
+    position = models.CharField(max_length=50, blank=True, null=True)
+    email = models.EmailField(max_length=100, null=True, blank=True)
+    address = models.CharField(max_length=200, null=True, blank=True)
+    phone = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Client's Contact Persons"

@@ -33,7 +33,8 @@ def generateallselected(request, pk):
     docs = templatedocs.objects.get(id=pk)
     template_name = docs.template_name
     #path = 'C:\\Documents\\'+ docs.filename nfor settings.TEMPLATE_DIR
-    path = settings.TEMPLATE_DIR+docs.filename
+    path = settings.TEMPLATEDOCS+docs.filename
+    print(path)
     path_docs = settings.DOCUMENTS
     
     filename = docs.filename

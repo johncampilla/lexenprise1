@@ -115,6 +115,7 @@ def generatedocs(request, pk, mid, tid):
     recipient = client.account_person
     email = client.email
     doc = DocxTemplate("templates/"+filename)
+    print(doc)
     context = {
         'matter_title': matter_title,
         'applicant': applicant,
@@ -130,10 +131,15 @@ def generatedocs(request, pk, mid, tid):
         'email': email,
         'pk' : pk,
     }
-    print(context)
+#    print(context)
     doc.render(context)
     print('pati d2', doc)
-    doc.save("C:\\Documents\\"+filename)   
+    
+    print(settings.TEMPLATEDOCS)
+    doc.save("C:\\Documents\\"+filename)  
+    #tempdir = settings.TEMPLATEDOCS 
+    #doc.save(tempdir+'+filename)   
+    
 
     return redirect('view-activitywtemplates', tid, mid)
 

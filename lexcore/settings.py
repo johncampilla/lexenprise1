@@ -32,7 +32,7 @@ DEBUG =True
 #DEBUG = False
 
 #ALLOWED_HOSTS = [".awsapprunner.com"]
-ALLOWED_HOSTS = [ ]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -115,17 +115,28 @@ WSGI_APPLICATION = 'lexcore.wsgi.application'
 # }
 
 # ==============My Postgresql in local ==================
+# DATABASES = {
+#      'default': {
+#          'ENGINE': 'django.db.backends.postgresql',
+#          'NAME': config('NAME'),
+#          'USER': config('USER'),
+#          'PASSWORD': config('PASSWORD'),
+#          'HOST': config('HOST'),
+#          'PORT': '5432',
+#      }
+#  }
+
+# ==============My Postgresql in local ==================
 DATABASES = {
      'default': {
-         'ENGINE': 'django.db.backends.postgresql',
+         'ENGINE': 'django.db.backends.mysql',
          'NAME': 'lexcoredb',
-         'USER': 'lexcore_admin',
-         'PASSWORD': '640515John',
-         'HOST': 'lexcoredb-instance.cfms4k8s6k1z.ap-southeast-1.rds.amazonaws.com',
-         'PORT': '5432',
+         'USER': 'root',
+         'PASSWORD': 'john@640515',
+         'HOST': 'localhost',
+         'PORT': '3306',
      }
  }
-
 
 #==================For Cloud Database======================================
 #This database resides in AWS
@@ -215,8 +226,10 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 #EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_USER = 'digitaljclextrim@gmail.com'
-EMAIL_HOST_PASSWORD = 'tmvczpjtjclacpnn'
+#EMAIL_HOST_USER = 'digitaljclextrim@gmail.com'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+#EMAIL_HOST_PASSWORD = 'tmvczpjtjclacpnn'
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 #EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = "LEXTRIM"
 
@@ -226,3 +239,7 @@ COMPANY_NAME = 'Law Firm Name'
 EXCHANGE_RATE = 44.00
 TEMPLATE_DIR = 'C:\\Templates\\'
 DOCUMENTS = 'C:\\Documents\\'
+
+TEMPLATEDOCS = BASE_DIR/'lexcore/templates/docutemplates/templates/'
+
+

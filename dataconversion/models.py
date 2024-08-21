@@ -21,7 +21,7 @@ class csv_client(models.Model):
     Street = models.CharField(max_length=100, blank=True, null=True)
     City = models.CharField(max_length=100, blank=True, null=True)
     State_Prov = models.CharField(max_length=100, blank=True, null=True)
-    Country = models.CharField(max_length=25, blank=True, null=True)
+    Country = models.CharField(max_length=60, blank=True, null=True)
     Fax_Number = models.CharField(max_length=60, blank=True, null=True)
     EMail = models.CharField(max_length=100, blank=True, null=True)
     URL = models.CharField(max_length=60, blank=True, null=True)
@@ -39,6 +39,11 @@ class csv_client(models.Model):
 
     def __str__(self):
         return f"{self.ClientName}"
+    
+class csv_casefolder(models.Model):
+    clientnumber = models.CharField(max_length=25, blank=True, null=True)
+    folder_description = models.CharField(max_length=200)
+
 
 class csv_matter(models.Model):
     Client_Number = models.CharField(max_length=15, blank=True, null=True)
@@ -95,7 +100,7 @@ class csv_matter(models.Model):
     CreatedBy = models.CharField(max_length=10, blank=True, null=True)
     ModifiedBy = models.CharField(max_length=10, blank=True, null=True)
     Madrid = models.CharField(max_length=10, blank=True, null=True)
-    Renewal = models.CharField(max_length=1)
+    Renewal = models.CharField(max_length=1, blank=True, null=True)
 
     def __str__(self):
         return f"{self.Case1}"
@@ -186,6 +191,65 @@ class csv_duedates(models.Model):
     Complied = models.CharField(max_length=5, blank=True, null=True)
     DateComplied = models.DateField(null=True, blank=True)
     Remarks = models.TextField(blank=True, null=True) 
+# reference tables
+
+class csv_apptype(models.Model):
+    ApplicationType = models.CharField(max_length=10, null=True, blank=True)
+    Description = models.CharField(max_length=100, blank=True)
+
+class csv_appstat(models.Model):
+    AppStat = models.CharField(max_length=10, blank=True)
+    ApplicationStatus = models.CharField(max_length=50, blank=True)
+
+class csv_officers(models.Model):
+    CaseOfficers = models.CharField(max_length=10, blank=True, null=True)
+    OfficerName = models.CharField(max_length=100, blank=True, null=True)
+
+class csv_docs(models.Model):
+    DocumentType = models.CharField(max_length=10, blank=True)
+    Description = models.CharField(max_length=100)
+
+class csv_applicant(models.Model):
+    ApplicantCode = models.CharField(max_length=200, blank=True)
+    ApplicantName = models.CharField(max_length=200, blank=True)
+
+class csv_templates(models.Model):
+    DocumentCode = models.CharField(max_length=20, blank=True)
+    Description = models.CharField(max_length=200, blank=True)
+    ApplicationType = models.CharField(max_length=10, blank=True)
+    DocPath = models.CharField(max_length=100, blank=True)
+
+class csv_industry(models.Model):
+    Industry = models.CharField(max_length=10, blank=True)
+    Description = models.CharField(max_length=200, blank=True)
+
+class csv_stages(models.Model):
+    Stage = models.IntegerField(null=True, blank=True)
+    Description = models.CharField(max_length=200, blank=True)
+
+class csv_clientfile(models.Model):
+    id = models.IntegerField(primary_key=True)
+    client_number = models.CharField(max_length=15, null=True)
+    entity_type = models.CharField(max_length=15, blank=True, null=True)
+    category = models.CharField(max_length=15, blank=True, null=True)
+    client_name = models.CharField(max_length=200, blank=True, null=True)
+    unit_description = models.CharField(max_length=60, blank=True, null=True)
+    street = models.CharField(max_length=60, blank=True, null=True)
+    city = models.CharField(max_length=60, blank=True, null=True)
+    state = models.CharField(max_length=60, blank=True, null=True)
+    country_name = models.CharField(max_length=60, blank=True, null=True)
+    fax_number = models.CharField(max_length=60, blank=True, null=True)
+    email = models.CharField(max_length=100, blank=True, null=True)
+    website = models.CharField(max_length=60, blank=True, null=True)
+    zip_code = models.CharField(max_length=30, blank=True, null=True)
+    landline = models.CharField(max_length=100, blank=True, null=True)
+    date_acquired = models.DateField(null=True, blank=True)
+    country = models.CharField(max_length=10, blank=True, null=True)
+    industry_id = models.IntegerField(null=True, blank=True)
+    date_entered =  models.DateField(null=True, blank=True)
+    client_type = models.CharField(max_length=10, blank=True, null=True)
+    account_officer = models.CharField(max_length=50, blank=True, null=True)
+    account_person = models.CharField(max_length=50, blank=True, null=True)
 
 
 
