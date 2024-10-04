@@ -43,6 +43,10 @@ class TaskTemplates(models.Model):
 
     def __str__(self):
         return f"{self.task} - {self.template.template_docname}"
+    
+    class Meta:
+        verbose_name_plural = 'Standard Templates'
+    
 class FilingFeeCodes(models.Model):
     ActivityCode = models.ForeignKey(ActivityCodes, on_delete=models.CASCADE)
     FeeCode = models.CharField(max_length=15, blank=True)
@@ -56,6 +60,9 @@ class FilingFeeCodes(models.Model):
     pesoamount = models.DecimalField(
         max_digits=10, decimal_places=2, null=True, blank=True)
     
+    class Meta:
+        verbose_name_plural = 'Filing Fee Codes'
+
     def __str__(self):
         return f"{self.ActivityCode} - {self.fee_description}"
 
@@ -105,7 +112,11 @@ class DueCode(models.Model):
         null=True, blank=True, max_digits=5, decimal_places=3)
 
     def __str__(self):
-        return f'{self.Description} - {self.apptype.apptype}'
+        return f'{self.DueCode} - {self.Description}'
+
+    class Meta:
+        verbose_name_plural = 'Due Codes'
+
 
 
 class DueCode_Incoming(models.Model):

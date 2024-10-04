@@ -28,7 +28,7 @@ class TempBills(models.Model):
 
 
     class Meta:
-        verbose_name_plural = 'Temporary Billing Services'
+        verbose_name_plural = 'Proforma Services Rendered'
 
     def __str__(self):
         return f'{self.matter.matter_title} - {self.tran_date} {self.service_rendered}'
@@ -54,6 +54,9 @@ class TempFilingFees(models.Model):
     updated = models.DateTimeField(auto_now=True)
     peso_rate_used = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 
+    class Meta:
+        verbose_name_plural = 'Proforma Filing Fees'
+
     def __str__(self):
         return f'{self.matter.matter_title} - {self.tran_date} - {self.filing_particulars}'
 
@@ -77,6 +80,9 @@ class TempOPE(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     peso_rate_used = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = 'Proforma Expenses'
 
     def __str__(self):
         return f'{self.matter.matter_title} - {self.tran_date} - {self.expnse_particulars}'
@@ -103,6 +109,9 @@ class AccountsReceivable(models.Model):
     peso_rate_used = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
     payment_tag = models.CharField(max_length=15, choices=PAYMENTTAG, blank=True, default='UN')
 
+    class Meta:
+        verbose_name_plural = 'Client''s Accounts Recievable'
+
     def __str__(self):
         return f'{self.bill_no} {self.matter.matter_title}'
 
@@ -119,12 +128,18 @@ class Bills(models.Model):
     pf_PhPamount = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
     peso_rate_used = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 
+    class Meta:
+        verbose_name_plural = 'Professional Services Rendered'
+
     def __str__(self):
         return f'{self.ar} - {self.service_rendered}'
 
 class InvoiceImage(models.Model):
     ar = models.ForeignKey(AccountsReceivable, on_delete=models.CASCADE)
     invoiceImage = models.ImageField(upload_to="invoices/%Y/", blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = 'Physical Invoice'
 
     def __str__(self):
         return f'{self.ar} - {self.invoiceImage}'
@@ -138,6 +153,9 @@ class FilingFees(models.Model):
     filing_fee_PHPamount = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True) 
     peso_rate_used = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 
+    class Meta:
+        verbose_name_plural = 'Gov''t/Filing Fees'
+
     def __str__(self):
         return f'{self.ar.bill_no} - {self.filing_particulars}'
 
@@ -150,6 +168,9 @@ class OPE(models.Model):
     exp_USDAmount = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
     exp_PHPAmount = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
     peso_rate_used = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = 'OPE'
 
     def __str__(self):
         return f'{self.ar.bill_no} - {self.exp_particulars}'

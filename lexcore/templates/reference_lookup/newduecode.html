@@ -52,7 +52,36 @@
                         </div>
                     </form>
                 </div>
+                
             </div>
+                <table class="table-hover table-bordered table-sm small table" id="clientlist">
+                    <!-- <table class="table-hover table-sm table-bordered small table table-dark table-striped">         -->
+                    <thead class="table-primary text-center">
+                        <tr>
+                            <th scope="col" style="width:3%;">#</th>
+                            <th scope="col" style="width:25%;">Matter</th>
+                            <th scope="col" style="width:20%;">Due Code</th>
+                            <th scope="col" style="width:15%;">Due Date</th>
+                            <th scope="col" style="width:40%;">Particulars</th>
+                            <th scope="col" style="width:5%;">Select</th>
+
+                        </tr>
+                    </thead>
+                    {% for duedates in duedatelist %}
+                    <tr>
+                        <td>{{ forloop.counter}}</td>
+                        <td>{{ duedates.matter}}</td>
+                        <td>{{ duedates.duecode }}</td>
+                        <td>{{ duedates.duedate }}</td>
+                        <td>{{ duedates.particulars }}</td>
+                        <td style="text-align: center;"><a class="btn btn-secondary btn-sm"
+                                href="{% url 'select-matter' duedates.matter_id %}" title="Select"><i
+                                    class="far fa-hand-pointer"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
 
         </div>
     </div>

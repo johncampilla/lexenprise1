@@ -1,6 +1,7 @@
 from django.db import models
 from matter.models import Matters
 from reference_lookup.models import ActivityGroup
+from client.models import *
 from taskcode_settings.models import *
 from userprofile.models import *
 from casefolder.models import *
@@ -55,6 +56,7 @@ class task_detail(models.Model):
     mail_type = models.CharField(
         max_length=15, choices=MAILTYPE, null=True, blank=True)
     contact_person = models.CharField(max_length=50, blank=True)
+    contacts = models.ForeignKey(Contact_Person, on_delete=models.CASCADE, null=True, blank=True)
     duecode = models.ForeignKey(
         DueCode, on_delete=models.PROTECT, blank=True, null=True)
     billstatus = models.CharField(
@@ -65,7 +67,8 @@ class task_detail(models.Model):
     datecreated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.matter.matter_title} - {self.matter.matterno} - { self.tran_date } - {self.task}'
+        # return f'{self.matter.matter_title} - {self.matter.matterno} - { self.tran_date } - {self.task}'
+        return f'{self.task}'        
 
     def save(self, *args, **kwargs):
         if self.doc_type == 'Incoming':

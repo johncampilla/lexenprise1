@@ -27,6 +27,8 @@ def email_index(request):
 def view_email(request, pk):
     form = NewEmailForm()
     email = Emails.objects.get(id=pk)
+    emailattachments = EmailAttachments.objects.filter(email_id = pk)
+    print(emailattachments)
     matter = Matters.objects.get(id=email.matter_id)
     emails = Emails.objects.filter(matter_id = matter.id).order_by('-created_at')
     mattermessages = inboxmessage.objects.filter(see_matter_id = matter.id).order_by('-created_at')
@@ -38,6 +40,7 @@ def view_email(request, pk):
     context = {
         'email' : email,
         'emails': emails,
+        'emailattachments' : emailattachments,
         'msginbox' : mattermessages,
         'matter': matter,
         'duedates': duedates,

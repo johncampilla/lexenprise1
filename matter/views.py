@@ -58,7 +58,7 @@ def SelectMatter(request, pk):
     services = Matter_ClassOfGoods.objects.filter(matter_id = pk)
     invoices = AccountsReceivable.objects.filter(matter_id = pk).order_by('-bill_date')
     image = IP_MatterImage.objects.filter(matter_id = pk)
-
+    litigation = MatterLitigation.objects.filter(matter_id = pk)
     form = MatterForm()
     forminfo = IP_MatterForm()
     formpriority = PriorityForm()
@@ -66,6 +66,7 @@ def SelectMatter(request, pk):
     formClGoods = ClGoodsForm()
     formDueDate = NewDueDateForm()
     forminventor = MatterInventorForm()
+    formlitigation = LitigationMatterForm()
 
     context = {
         'matter' : matter,
@@ -78,12 +79,14 @@ def SelectMatter(request, pk):
         'applicants' : applicants,
         'inventors' : inventors,
         'services': services,
+        'litigation' : litigation,
         'form'  : form,
         'forminfo': forminfo,
         'formpriority':formpriority,
         'formapplicant':formapplicant,
         'formClGoods': formClGoods,
         'formDueDate': formDueDate,
+        'formlitigation' : formlitigation,
         'invoices' : invoices,
         'image'    : image,
         'casehistory': casehistory,
@@ -108,6 +111,8 @@ def SelectMatter(request, pk):
             print("d2 pumasok")
             return render(request, 'matter/matter_detail_nonip.html', context)
 
+    elif stype.case_type.upper() == 'LITIGATION':
+        return render(request, 'matter/matter_detail_nonip.html', context)
     else:
         return render(request, 'matter/matter_detail_nonip.html', context)
     

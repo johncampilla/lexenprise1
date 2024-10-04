@@ -156,6 +156,19 @@ class EditMatterFormINV(forms.ModelForm):
             'nice_class' : forms.TextInput(attrs={'class': 'form-control'}),
             'renewal_date': NumberInput(attrs={'type': 'date','class':'form-control'}),
         }
+class LitigationMatterForm(forms.ModelForm):
+    class Meta:
+        model = MatterLitigation
+        fields = 'party1', 'position_1', 'position_2', 'party2', 'position_2', 'firms_counsel', 'opposing_counsel'
+        widgets = {
+            'party1': forms.TextInput(attrs={'class': 'form-control'}),
+            'position_1': forms.TextInput(attrs={'class': 'form-control'}),
+            'party2': forms.TextInput(attrs={'class': 'form-control'}),
+            'position_2': forms.TextInput(attrs={'class': 'form-control'}),
+            'firms_counsel': forms.TextInput(attrs={'class': 'form-control'}),
+            'opposing_counsel' : forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
 
 class PriorityForm(forms.ModelForm):
     class Meta:

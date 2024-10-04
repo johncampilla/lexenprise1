@@ -29,7 +29,7 @@ urlpatterns = [
     path("invoice/billeditPF/<int:pk>/'", views.BillEditTempPf, name='invoice-editPF'),
 
 # urls for posting to AR
-    #path("posting/ToARFile/<int:pk>/'", views.BillEditTempPf, name='invoice-editPF'),
+    #path("posting/ToARFile/<int:pk>/'", views.PostToAR, name='invoice-editPF'),
 
     path("testinginvoice/<int:pk>/'", views.testqry, name='test-qry'),
 

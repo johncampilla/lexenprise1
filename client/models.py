@@ -105,11 +105,11 @@ class Client_Data(models.Model):
 
 class Contact_Person(models.Model):
     client = models.ForeignKey(Client_Data, on_delete=models.CASCADE, null=True)
-    contact_person = models.CharField(max_length=100, blank=True, null=True)
+    contact_person = models.CharField(max_length=100, blank=True, null=True, verbose_name="Contact Person")
     position = models.CharField(max_length=50, blank=True, null=True)
     email = models.EmailField(max_length=100, null=True, blank=True)
     address = models.CharField(max_length=200, null=True, blank=True)
-    phone = models.CharField(max_length=100, null=True, blank=True)
+    phone = models.CharField(max_length=100, null=True, blank=True, verbose_name="Phone/Mobile #")
 
     class Meta:
         verbose_name_plural = "Client's Contact Persons"

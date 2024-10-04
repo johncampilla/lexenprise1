@@ -42,6 +42,9 @@ Client Details
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="tab" href="#chat">Chatter</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#docs">Documents (In/Out)</a>
+                </li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
@@ -512,6 +515,43 @@ Client Details
                         </tbody>
                     </table>
                 </div>
+                <div class="tab-pane container fade" id="docs">
+                    <!-- Button trigger modal -->
+                    <table class="table-hover table-bordered table-sm small table" id="doclist">
+                        <thead class="table-primary text-center">
+                            <tr>
+                                <th scope="col" style="width:3%;">#</th>
+                                <th scope="col" style="width:10%;">Doc Date</th>
+                                <th scope="col" style="width:25%;">Matter</th>
+                                <th scope="col" style="width:25%;">Task Detail </th>
+                                <th scope="col" style="width:20%;">Doc Description</th>
+                                <th scope="col" style="width:10%;">Attachment</th>
+                                <th scope="col" style="width:5%;">Select</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for docs in documents %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td><b>{{ docs.DocDate}}</b></td>
+                                <td>{{ docs.task_detail.matter.matter_title}}</td>
+                                <td>{{ docs.task_detail }}</td>
+                                <td>{{ docs.Description }}</td>
+                                {% if docs.DocsPDF %}
+                                <td> <img class="img-fluid" src="{{ docs.imageURL }}" height="50" width="100" /></td>
+                                {% else%}
+                                <td>{{ docs.DocsPDF }}</td>
+                                {% endif %}
+                                <td style="text-align: center;"><a class="btn btn-secondary btn-sm" href="#"
+                                        title="Selected Document"><i class="far fa-hand-pointer"></i></a>
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>

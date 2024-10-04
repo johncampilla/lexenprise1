@@ -124,7 +124,6 @@ def generatedocs(request, pk, mid, tid):
         'certificate_no' : certificate_no,
         'registration_date':registration_date,
         'nice_class' : nice_class,
-        #client info
         'client_name' : client_name,
         'client_address': client_address,
         'contact': recipient,
@@ -136,7 +135,7 @@ def generatedocs(request, pk, mid, tid):
     print('pati d2', doc)
     
     print(settings.TEMPLATEDOCS)
-    doc.save("C:\\Documents\\"+filename)  
+    doc.save("templates/generated_docs/"+filename)     
     #tempdir = settings.TEMPLATEDOCS 
     #doc.save(tempdir+'+filename)   
     

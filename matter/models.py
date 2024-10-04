@@ -163,9 +163,10 @@ class Matters(models.Model):
         ordering = ('-created_at',)
 
     class Meta:
-        verbose_name_plural = 'Engagements/Accounts'
+        verbose_name_plural = 'Engagements'
     
 class MatterLitigation(models.Model):
+    
     matter = models.ForeignKey(Matters, on_delete=models.CASCADE)
     party1 = models.TextField(blank=True, null=True)
     position_1 = models.CharField(max_length=100, blank=True, null=True)
@@ -174,6 +175,12 @@ class MatterLitigation(models.Model):
     firms_counsel = models.ForeignKey(Lawyer_Data, on_delete=models.CASCADE, blank=True, null=True)
     opposing_counsel = models.TextField(max_length=100, blank=True, null=True)
     
+    def __str__(self):
+        return f'{self.matter.matter_title} - {self.party1} vs {self.party2}'
+
+    class Meta:
+        verbose_name_plural = 'Engagement-Non-IP'
+
 
 class SelectMatters(models.Model):
     matter = models.ForeignKey(Matters, on_delete=models.CASCADE)
@@ -188,7 +195,7 @@ class Matter_Applicant(models.Model):
     main_applicant = models.CharField(max_length=10, blank=True, choices=YESNO)
 
     class Meta:
-        verbose_name_plural = 'Matter Applicants'
+        verbose_name_plural = 'Applicants'
     
     def __str__(self):
         return f"{self.matter.matter_title} - {self.applicant.applicant}"
@@ -209,7 +216,7 @@ class Inventor(models.Model):
     nationality = models.CharField(max_length=25, blank=True)
 
     class Meta:
-        verbose_name_plural = 'Inventors/Designers'
+        verbose_name_plural = 'List Of Inventors'
 
     def __str__(self):
         return f'{self.last_name}, {self.first_name} {self.middle_name}'
@@ -220,7 +227,7 @@ class Matter_Inventor(models.Model):
     remarks = models.TextField(blank=True)
 
     class Meta:
-        verbose_name_plural = 'Inventors/Designers'
+        verbose_name_plural = 'Matter Inventors'
 
     def __str__(self):
         return f'{self.inventor.last_name}, {self.inventor.first_name} {self.inventor.middle_name}'

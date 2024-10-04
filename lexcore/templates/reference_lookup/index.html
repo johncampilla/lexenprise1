@@ -290,12 +290,13 @@ Reference
                     </table>
                 </div>
                 <div class="tab-pane container fade" id="duecodes">
-                    <div class="card mt-2 mb-2">
-                        <div class="card-header text-center mb-1" style=" color: black; background-color:rgb(228, 248, 188);">
+                        {% comment %} <div class="card-header text-center mb-1" style=" color: black; background-color:rgb(228, 248, 188);">
                             <a class="btn btn-secondary btn-sm" href="{% url 'new-duecode' %}" title="Add Task Code"><i
                                 class="fa fa-plus"></i></a>
-                               Mandatory Due Date Codes
-                        </div>
+                               Due Date Code
+                        </div> {% endcomment %}
+                        <a class="btn btn-secondary btn-sm" href="{% url 'new-duecode' %}" title="New Due Date Code"><i
+                            class="fa fa-plus"></i></a>
         
                         <table class="table-hover table-bordered table-sm small table" id="lookduecode">
                             <thead class="table-primary text-center">
@@ -385,9 +386,12 @@ Reference
 
                 </div>
                 <div class="tab-pane container fade" id="stages">
-                    <a class="btn btn-secondary btn-sm" href="{% url 'new-activitygroup' %}" title="Add Task Code"><i
+                       <a class="btn btn-secondary btn-sm" href="{% url 'new-duecode' %}" title="New Due Date Code"><i
+                            class="fa fa-plus"></i></a>                
+                    {% comment %} <a class="btn btn-secondary btn-sm" href="{% url 'new-activitygroup' %}" title="Add Task Code"><i
                             class="fa fa-plus"></i></a>
-                    <!-- Button trigger modal -->
+                    <!-- Button trigger modal --> {% endcomment %}
+
                     <table class="table-hover table-bordered table-sm small table">
                         <thead class="table-primary text-center">
                             <tr>

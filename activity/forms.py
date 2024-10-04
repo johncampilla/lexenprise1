@@ -39,9 +39,6 @@ class IncomingActivityForm(forms.ModelForm):
             'duecode': forms.Select(attrs={'class': 'form-control', 'cols': 200, 'rows': 2}),
             'contact_person':forms.TextInput(attrs={'class': 'form-control'}),
             'examiner': forms.TextInput(attrs={'class': 'form-control'}),
-
-
-
         }
 
 class ActivityForm(forms.ModelForm):

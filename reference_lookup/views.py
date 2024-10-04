@@ -5,7 +5,7 @@ from taskcode_settings.forms import TaskTemplateForm
 from taskcode_settings.models import ActivityCodes, FilingFeeCodes, DueCode, DueCode_Incoming, TaskTemplates
 from client.models import *
 from casefolder.models import Status
-from matter.models import Matters
+from matter.models import Matters, AppDueDate
 
 # Create your views here.
 
@@ -603,6 +603,8 @@ def EditTaskCode(request, pk):
 
 def EditDueCode(request, pk):
     duecode = DueCode.objects.get(id=pk)
+    # appduedates = FilingFeeCodes.objects.filter(ActivityCode_id = pk)    
+    matters = AppDueDate.objects.filter(duecode = pk).order_by('-duedate')
     sid = pk
     if request.method == 'POST':
         form = DueCodeForm(request.POST, instance=duecode)
@@ -621,6 +623,7 @@ def EditDueCode(request, pk):
 
     context = {
         'form': form,
+        'duedatelist': matters,
     }
     return render(request, 'reference_lookup/newduecode.html', context)
 

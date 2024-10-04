@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from matter.models import Matters, AppDueDate, ConventionPriority
 from casefolder.models import CaseFolder
-from activity.models import task_detail
+from activity.models import task_detail, FilingDocs
 from emailportal.models import Emails
 from chatter.models import inboxmessage
 from invoice.models import *
@@ -62,6 +62,7 @@ def ClientList(request):
 @login_required
 def SelectClient(request, pk):
     client = Client_Data.objects.get(id=pk)
+    documents = FilingDocs.objects.filter(task_detail__matter__folder__client_id = client.id).order_by('-DocDate')
     emails = Emails.objects.filter(matter__folder__client_id = client.id).order_by('-created_at')
     msginbox = inboxmessage.objects.filter(see_matter__folder__client_id = client.id).order_by('-created_at')
     clientmatters = Matters.objects.filter(folder__client_id = pk)
@@ -92,6 +93,7 @@ def SelectClient(request, pk):
         'folder_result' : folder_result,
         'emails' : emails,
         'msginbox': msginbox,
+        'documents' : documents,
     }
 
     return render(request, 'client/client_detail.html', context)

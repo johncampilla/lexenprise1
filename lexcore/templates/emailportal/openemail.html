@@ -27,6 +27,34 @@
                     </div>
                 </div>
             </div>
+            <br>
+            <div class="row">
+                <!-- <div class="card"> -->
+                <div class="col-lg-4">
+                    <table class="table-hover table-bordered table-sm small table">
+                        <thead class="table-primary text-center">
+                            <tr>
+                                <th scope="col" style="width:10%;">Fille Attachment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for eattach in emailattachments %}
+                            <tr>
+                                {% if eattach.emailattachment %}
+                                <td style="text-align: center;"> <img class="img-fluid" src="{{ eattach.imageURL }}"
+                                        height="50" width="100" />
+                                </td>
+                                {% else%}
+                                <td>{{ eattach.emailattachment }}</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- </div> -->
+            </div>
+
             <div class="card">
                 <div class="card-header text-center text-white sm bg-primary">
                     <b>Related</b>
@@ -440,6 +468,7 @@
 
                             </div>
                         </div>
+
                         <div class="tab-pane container fade" id="chat">
                             <div class="card">
                                 <table class="table-hover table-bordered table-sm small table" id="maillist">
