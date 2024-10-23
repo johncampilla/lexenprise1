@@ -32,7 +32,8 @@ DEBUG =True
 #DEBUG = False
 
 #ALLOWED_HOSTS = [".awsapprunner.com"]
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['192.168.1.7', 'lexcore']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -107,12 +108,12 @@ WSGI_APPLICATION = 'lexcore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # ==============My Postgresql in local ==================
 # DATABASES = {
@@ -127,16 +128,17 @@ WSGI_APPLICATION = 'lexcore.wsgi.application'
 #  }
 
 # ==============My Postgresql in local ==================
-DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'lexcoredb',
-         'USER': 'root',
-         'PASSWORD': 'john@640515',
-         'HOST': 'localhost',
-         'PORT': '3306',
-     }
- }
+# commented on 10/23/2024
+# DATABASES = {
+#      'default': {
+#          'ENGINE': 'django.db.backends.mysql',
+#          'NAME': 'lexcoredb',
+#          'USER': 'root',
+#          'PASSWORD': 'john@640515',
+#          'HOST': 'localhost',
+#          'PORT': '3306',
+#      }
+#  }
 
 #==================For Cloud Database======================================
 #This database resides in AWS

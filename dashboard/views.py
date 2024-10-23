@@ -17,6 +17,7 @@ from django.contrib import messages
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.conf import settings
+import string
 from django.contrib.auth.decorators import login_required 
 
 # more imports login/logout
@@ -24,6 +25,23 @@ from django.contrib.auth.decorators import login_required
 #from django.contrib.auth.decorators import login_required # Login Required
 # from django.views.decorators.cache import cache_control #destroy the section after logout
 
+
+# to get due date period to display
+#sdate = date.today()
+#nmonth = 1
+#svalue = ("+"+str(nmonth))
+#duedate1 = sdate + relativedelta(months=int(svalue))
+#print(duedate1)
+
+#                if duecode.basisofcompute == 'In Months':
+#                    nmonth = int(duecode.terms)
+#                    svalue = ("+"+str(nmonth))
+#                    duedate = sdate + relativedelta(months=int(svalue))#
+
+#                if duecode.basisofcompute == 'In Days':
+#                    ndays = int(duecode.terms)
+#                    svalue = ("+"+str(ndays))
+#                    duedate = sdate + relativedelta(days=int(svalue))
 
 # Create your views here.
 today = date.today()

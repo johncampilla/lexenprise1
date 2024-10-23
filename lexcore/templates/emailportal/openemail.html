@@ -35,6 +35,9 @@
                         <thead class="table-primary text-center">
                             <tr>
                                 <th scope="col" style="width:10%;">Fille Attachment</th>
+                                <th scope="col" style="width:50%;">File Name</th>
+                                <th scope="col" style="width:5%;">Open</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -47,6 +50,11 @@
                                 {% else%}
                                 <td>{{ eattach.emailattachment }}</td>
                                 {% endif %}
+                                <td>{{ eattach.emailattachment }}</td>
+                                <td class="text-center"><a class="btn btn-secondary btn-sm" href="#"
+                                        title="Open Attachment"><i class="far fa-hand-pointer"></i></a>
+                                </td>
+
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -73,9 +81,9 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#billings">Accounts Receivables</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#emails">Email Messages</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#chat">Chat Messages</a>
                         </li>
