@@ -5,3 +5,5 @@ from . models import *
 # admin.site.register(FolderType)
 # admin.site.register(Status)
 # admin.site.register(CaseFolder)
+admin.site.register(Lawyer_Data)
+
